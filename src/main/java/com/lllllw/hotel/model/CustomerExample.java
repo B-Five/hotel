@@ -1,6 +1,8 @@
 package com.lllllw.hotel.model;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class CustomerExample {
@@ -102,6 +104,32 @@ public class CustomerExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andCIdIsNull() {
@@ -511,6 +539,746 @@ public class CustomerExample {
 
         public Criteria andCGenderNotBetween(String value1, String value2) {
             addCriterion("c_gender not between", value1, value2, "cGender");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedIsNull() {
+            addCriterion("c_created is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedIsNotNull() {
+            addCriterion("c_created is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedEqualTo(Date value) {
+            addCriterion("c_created =", value, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedNotEqualTo(Date value) {
+            addCriterion("c_created <>", value, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedGreaterThan(Date value) {
+            addCriterion("c_created >", value, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedGreaterThanOrEqualTo(Date value) {
+            addCriterion("c_created >=", value, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedLessThan(Date value) {
+            addCriterion("c_created <", value, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedLessThanOrEqualTo(Date value) {
+            addCriterion("c_created <=", value, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedIn(List<Date> values) {
+            addCriterion("c_created in", values, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedNotIn(List<Date> values) {
+            addCriterion("c_created not in", values, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedBetween(Date value1, Date value2) {
+            addCriterion("c_created between", value1, value2, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCCreatedNotBetween(Date value1, Date value2) {
+            addCriterion("c_created not between", value1, value2, "cCreated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedIsNull() {
+            addCriterion("c_updated is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedIsNotNull() {
+            addCriterion("c_updated is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedEqualTo(Date value) {
+            addCriterion("c_updated =", value, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedNotEqualTo(Date value) {
+            addCriterion("c_updated <>", value, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedGreaterThan(Date value) {
+            addCriterion("c_updated >", value, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedGreaterThanOrEqualTo(Date value) {
+            addCriterion("c_updated >=", value, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedLessThan(Date value) {
+            addCriterion("c_updated <", value, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedLessThanOrEqualTo(Date value) {
+            addCriterion("c_updated <=", value, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedIn(List<Date> values) {
+            addCriterion("c_updated in", values, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedNotIn(List<Date> values) {
+            addCriterion("c_updated not in", values, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedBetween(Date value1, Date value2) {
+            addCriterion("c_updated between", value1, value2, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCUpdatedNotBetween(Date value1, Date value2) {
+            addCriterion("c_updated not between", value1, value2, "cUpdated");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1IsNull() {
+            addCriterion("c_intField1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1IsNotNull() {
+            addCriterion("c_intField1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1EqualTo(Integer value) {
+            addCriterion("c_intField1 =", value, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1NotEqualTo(Integer value) {
+            addCriterion("c_intField1 <>", value, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1GreaterThan(Integer value) {
+            addCriterion("c_intField1 >", value, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1GreaterThanOrEqualTo(Integer value) {
+            addCriterion("c_intField1 >=", value, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1LessThan(Integer value) {
+            addCriterion("c_intField1 <", value, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1LessThanOrEqualTo(Integer value) {
+            addCriterion("c_intField1 <=", value, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1In(List<Integer> values) {
+            addCriterion("c_intField1 in", values, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1NotIn(List<Integer> values) {
+            addCriterion("c_intField1 not in", values, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1Between(Integer value1, Integer value2) {
+            addCriterion("c_intField1 between", value1, value2, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield1NotBetween(Integer value1, Integer value2) {
+            addCriterion("c_intField1 not between", value1, value2, "cIntfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2IsNull() {
+            addCriterion("c_intField2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2IsNotNull() {
+            addCriterion("c_intField2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2EqualTo(Integer value) {
+            addCriterion("c_intField2 =", value, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2NotEqualTo(Integer value) {
+            addCriterion("c_intField2 <>", value, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2GreaterThan(Integer value) {
+            addCriterion("c_intField2 >", value, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2GreaterThanOrEqualTo(Integer value) {
+            addCriterion("c_intField2 >=", value, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2LessThan(Integer value) {
+            addCriterion("c_intField2 <", value, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2LessThanOrEqualTo(Integer value) {
+            addCriterion("c_intField2 <=", value, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2In(List<Integer> values) {
+            addCriterion("c_intField2 in", values, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2NotIn(List<Integer> values) {
+            addCriterion("c_intField2 not in", values, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2Between(Integer value1, Integer value2) {
+            addCriterion("c_intField2 between", value1, value2, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCIntfield2NotBetween(Integer value1, Integer value2) {
+            addCriterion("c_intField2 not between", value1, value2, "cIntfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1IsNull() {
+            addCriterion("c_stringField1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1IsNotNull() {
+            addCriterion("c_stringField1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1EqualTo(String value) {
+            addCriterion("c_stringField1 =", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1NotEqualTo(String value) {
+            addCriterion("c_stringField1 <>", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1GreaterThan(String value) {
+            addCriterion("c_stringField1 >", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1GreaterThanOrEqualTo(String value) {
+            addCriterion("c_stringField1 >=", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1LessThan(String value) {
+            addCriterion("c_stringField1 <", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1LessThanOrEqualTo(String value) {
+            addCriterion("c_stringField1 <=", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1Like(String value) {
+            addCriterion("c_stringField1 like", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1NotLike(String value) {
+            addCriterion("c_stringField1 not like", value, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1In(List<String> values) {
+            addCriterion("c_stringField1 in", values, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1NotIn(List<String> values) {
+            addCriterion("c_stringField1 not in", values, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1Between(String value1, String value2) {
+            addCriterion("c_stringField1 between", value1, value2, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield1NotBetween(String value1, String value2) {
+            addCriterion("c_stringField1 not between", value1, value2, "cStringfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2IsNull() {
+            addCriterion("c_stringField2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2IsNotNull() {
+            addCriterion("c_stringField2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2EqualTo(String value) {
+            addCriterion("c_stringField2 =", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2NotEqualTo(String value) {
+            addCriterion("c_stringField2 <>", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2GreaterThan(String value) {
+            addCriterion("c_stringField2 >", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2GreaterThanOrEqualTo(String value) {
+            addCriterion("c_stringField2 >=", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2LessThan(String value) {
+            addCriterion("c_stringField2 <", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2LessThanOrEqualTo(String value) {
+            addCriterion("c_stringField2 <=", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2Like(String value) {
+            addCriterion("c_stringField2 like", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2NotLike(String value) {
+            addCriterion("c_stringField2 not like", value, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2In(List<String> values) {
+            addCriterion("c_stringField2 in", values, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2NotIn(List<String> values) {
+            addCriterion("c_stringField2 not in", values, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2Between(String value1, String value2) {
+            addCriterion("c_stringField2 between", value1, value2, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCStringfield2NotBetween(String value1, String value2) {
+            addCriterion("c_stringField2 not between", value1, value2, "cStringfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1IsNull() {
+            addCriterion("c_dateField1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1IsNotNull() {
+            addCriterion("c_dateField1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1EqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField1 =", value, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1NotEqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField1 <>", value, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1GreaterThan(Date value) {
+            addCriterionForJDBCDate("c_dateField1 >", value, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1GreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField1 >=", value, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1LessThan(Date value) {
+            addCriterionForJDBCDate("c_dateField1 <", value, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1LessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField1 <=", value, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1In(List<Date> values) {
+            addCriterionForJDBCDate("c_dateField1 in", values, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1NotIn(List<Date> values) {
+            addCriterionForJDBCDate("c_dateField1 not in", values, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1Between(Date value1, Date value2) {
+            addCriterionForJDBCDate("c_dateField1 between", value1, value2, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield1NotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("c_dateField1 not between", value1, value2, "cDatefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2IsNull() {
+            addCriterion("c_dateField2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2IsNotNull() {
+            addCriterion("c_dateField2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2EqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField2 =", value, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2NotEqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField2 <>", value, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2GreaterThan(Date value) {
+            addCriterionForJDBCDate("c_dateField2 >", value, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2GreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField2 >=", value, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2LessThan(Date value) {
+            addCriterionForJDBCDate("c_dateField2 <", value, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2LessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("c_dateField2 <=", value, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2In(List<Date> values) {
+            addCriterionForJDBCDate("c_dateField2 in", values, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2NotIn(List<Date> values) {
+            addCriterionForJDBCDate("c_dateField2 not in", values, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2Between(Date value1, Date value2) {
+            addCriterionForJDBCDate("c_dateField2 between", value1, value2, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatefield2NotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("c_dateField2 not between", value1, value2, "cDatefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1IsNull() {
+            addCriterion("c_datetimeField1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1IsNotNull() {
+            addCriterion("c_datetimeField1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1EqualTo(Date value) {
+            addCriterion("c_datetimeField1 =", value, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1NotEqualTo(Date value) {
+            addCriterion("c_datetimeField1 <>", value, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1GreaterThan(Date value) {
+            addCriterion("c_datetimeField1 >", value, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1GreaterThanOrEqualTo(Date value) {
+            addCriterion("c_datetimeField1 >=", value, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1LessThan(Date value) {
+            addCriterion("c_datetimeField1 <", value, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1LessThanOrEqualTo(Date value) {
+            addCriterion("c_datetimeField1 <=", value, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1In(List<Date> values) {
+            addCriterion("c_datetimeField1 in", values, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1NotIn(List<Date> values) {
+            addCriterion("c_datetimeField1 not in", values, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1Between(Date value1, Date value2) {
+            addCriterion("c_datetimeField1 between", value1, value2, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield1NotBetween(Date value1, Date value2) {
+            addCriterion("c_datetimeField1 not between", value1, value2, "cDatetimefield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2IsNull() {
+            addCriterion("c_datetimeField2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2IsNotNull() {
+            addCriterion("c_datetimeField2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2EqualTo(Date value) {
+            addCriterion("c_datetimeField2 =", value, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2NotEqualTo(Date value) {
+            addCriterion("c_datetimeField2 <>", value, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2GreaterThan(Date value) {
+            addCriterion("c_datetimeField2 >", value, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2GreaterThanOrEqualTo(Date value) {
+            addCriterion("c_datetimeField2 >=", value, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2LessThan(Date value) {
+            addCriterion("c_datetimeField2 <", value, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2LessThanOrEqualTo(Date value) {
+            addCriterion("c_datetimeField2 <=", value, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2In(List<Date> values) {
+            addCriterion("c_datetimeField2 in", values, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2NotIn(List<Date> values) {
+            addCriterion("c_datetimeField2 not in", values, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2Between(Date value1, Date value2) {
+            addCriterion("c_datetimeField2 between", value1, value2, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCDatetimefield2NotBetween(Date value1, Date value2) {
+            addCriterion("c_datetimeField2 not between", value1, value2, "cDatetimefield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1IsNull() {
+            addCriterion("c_boolField1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1IsNotNull() {
+            addCriterion("c_boolField1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1EqualTo(Boolean value) {
+            addCriterion("c_boolField1 =", value, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1NotEqualTo(Boolean value) {
+            addCriterion("c_boolField1 <>", value, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1GreaterThan(Boolean value) {
+            addCriterion("c_boolField1 >", value, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1GreaterThanOrEqualTo(Boolean value) {
+            addCriterion("c_boolField1 >=", value, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1LessThan(Boolean value) {
+            addCriterion("c_boolField1 <", value, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1LessThanOrEqualTo(Boolean value) {
+            addCriterion("c_boolField1 <=", value, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1In(List<Boolean> values) {
+            addCriterion("c_boolField1 in", values, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1NotIn(List<Boolean> values) {
+            addCriterion("c_boolField1 not in", values, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1Between(Boolean value1, Boolean value2) {
+            addCriterion("c_boolField1 between", value1, value2, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield1NotBetween(Boolean value1, Boolean value2) {
+            addCriterion("c_boolField1 not between", value1, value2, "cBoolfield1");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2IsNull() {
+            addCriterion("c_boolField2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2IsNotNull() {
+            addCriterion("c_boolField2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2EqualTo(Boolean value) {
+            addCriterion("c_boolField2 =", value, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2NotEqualTo(Boolean value) {
+            addCriterion("c_boolField2 <>", value, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2GreaterThan(Boolean value) {
+            addCriterion("c_boolField2 >", value, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2GreaterThanOrEqualTo(Boolean value) {
+            addCriterion("c_boolField2 >=", value, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2LessThan(Boolean value) {
+            addCriterion("c_boolField2 <", value, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2LessThanOrEqualTo(Boolean value) {
+            addCriterion("c_boolField2 <=", value, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2In(List<Boolean> values) {
+            addCriterion("c_boolField2 in", values, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2NotIn(List<Boolean> values) {
+            addCriterion("c_boolField2 not in", values, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2Between(Boolean value1, Boolean value2) {
+            addCriterion("c_boolField2 between", value1, value2, "cBoolfield2");
+            return (Criteria) this;
+        }
+
+        public Criteria andCBoolfield2NotBetween(Boolean value1, Boolean value2) {
+            addCriterion("c_boolField2 not between", value1, value2, "cBoolfield2");
             return (Criteria) this;
         }
     }

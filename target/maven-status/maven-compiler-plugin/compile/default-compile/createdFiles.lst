@@ -1,9 +1,0 @@
-com\lllllw\hotel\model\Customer.class
-com\lllllw\hotel\model\CustomerExample$Criteria.class
-com\lllllw\hotel\utils\MyBatisGeneratorTool.class
-com\lllllw\hotel\domain\customer.class
-com\lllllw\hotel\dao\CustomerMapper.class
-com\lllllw\hotel\model\CustomerExample$GeneratedCriteria.class
-com\lllllw\hotel\model\CustomerExample.class
-com\lllllw\hotel\model\CustomerExample$Criterion.class
-com\lllllw\hotel\controller\CustomerController.class

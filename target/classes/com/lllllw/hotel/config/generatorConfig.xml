@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!--数据库驱动 -->
+    <classPathEntry  
+        location="C:\Users\chenjunhao\.m2\repository\mysql\mysql-connector-java\5.1.42\mysql-connector-java-5.1.42.jar" />
     <context
         id="MySQL2Tables"
         targetRuntime="MyBatis3"
@@ -20,7 +22,7 @@
         <!--数据库链接地址账号密码 -->
         <jdbcConnection
             driverClass="com.mysql.jdbc.Driver"
-            connectionURL="jdbc:mysql://localhost:3306/room?useSSL=false"
+            connectionURL="jdbc:mysql://localhost:3306/hotel?useSSL=false"
             userId="root"
             password="">
         </jdbcConnection>
@@ -42,7 +44,7 @@
         </javaModelGenerator>
         <!--生成映射文件存放位置 -->
         <sqlMapGenerator
-            targetPackage="com.lllllw.hotel.dao.mapper"
+            targetPackage="com.lllllw.hotel.mapper"
             targetProject="src/main/java">
             <property
                 name="enableSubPackages"

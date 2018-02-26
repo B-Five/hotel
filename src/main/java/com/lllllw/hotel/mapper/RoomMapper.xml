@@ -1,0 +1,3324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lllllw.hotel.dao.RoomMapper">
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Room">
+    <id column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="r_number" jdbcType="VARCHAR" property="rNumber" />
+    <result column="r_type" jdbcType="VARCHAR" property="rType" />
+    <result column="r_member" jdbcType="INTEGER" property="rMember" />
+    <result column="r_order" jdbcType="INTEGER" property="rOrder" />
+    <result column="r_price" jdbcType="DOUBLE" property="rPrice" />
+    <result column="r_created" jdbcType="TIMESTAMP" property="rCreated" />
+    <result column="r_updated" jdbcType="TIMESTAMP" property="rUpdated" />
+    <result column="r_intField1" jdbcType="INTEGER" property="rIntfield1" />
+    <result column="r_intField2" jdbcType="INTEGER" property="rIntfield2" />
+    <result column="r_stringField1" jdbcType="VARCHAR" property="rStringfield1" />
+    <result column="r_stringField2" jdbcType="VARCHAR" property="rStringfield2" />
+    <result column="r_dateField1" jdbcType="DATE" property="rDatefield1" />
+    <result column="r_dateField2" jdbcType="DATE" property="rDatefield2" />
+    <result column="r_dateTimeField1" jdbcType="TIMESTAMP" property="rDatetimefield1" />
+    <result column="r_dateTimeField2" jdbcType="TIMESTAMP" property="rDatetimefield2" />
+    <result column="r_boolField1" jdbcType="BIT" property="rBoolfield1" />
+    <result column="r_boolField2" jdbcType="BIT" property="rBoolfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    r_id, r_number, r_type, r_member, r_order, r_price, r_created, r_updated, r_intField1, 
+    r_intField2, r_stringField1, r_stringField2, r_dateField1, r_dateField2, r_dateTimeField1, 
+    r_dateTimeField2, r_boolField1, r_boolField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where r_id = #{rId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Room">
+    insert into room (r_id, r_number, r_type, 
+      r_member, r_order, r_price, 
+      r_created, r_updated, r_intField1, 
+      r_intField2, r_stringField1, r_stringField2, 
+      r_dateField1, r_dateField2, r_dateTimeField1, 
+      r_dateTimeField2, r_boolField1, r_boolField2
+      )
+    values (#{rId,jdbcType=INTEGER}, #{rNumber,jdbcType=VARCHAR}, #{rType,jdbcType=VARCHAR}, 
+      #{rMember,jdbcType=INTEGER}, #{rOrder,jdbcType=INTEGER}, #{rPrice,jdbcType=DOUBLE}, 
+      #{rCreated,jdbcType=TIMESTAMP}, #{rUpdated,jdbcType=TIMESTAMP}, #{rIntfield1,jdbcType=INTEGER}, 
+      #{rIntfield2,jdbcType=INTEGER}, #{rStringfield1,jdbcType=VARCHAR}, #{rStringfield2,jdbcType=VARCHAR}, 
+      #{rDatefield1,jdbcType=DATE}, #{rDatefield2,jdbcType=DATE}, #{rDatetimefield1,jdbcType=TIMESTAMP}, 
+      #{rDatetimefield2,jdbcType=TIMESTAMP}, #{rBoolfield1,jdbcType=BIT}, #{rBoolfield2,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="rNumber != null">
+        r_number,
+      </if>
+      <if test="rType != null">
+        r_type,
+      </if>
+      <if test="rMember != null">
+        r_member,
+      </if>
+      <if test="rOrder != null">
+        r_order,
+      </if>
+      <if test="rPrice != null">
+        r_price,
+      </if>
+      <if test="rCreated != null">
+        r_created,
+      </if>
+      <if test="rUpdated != null">
+        r_updated,
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1,
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2,
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1,
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2,
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1,
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2,
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1,
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2,
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1,
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="rNumber != null">
+        #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.rId != null">
+        r_id = #{record.rId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rNumber != null">
+        r_number = #{record.rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rType != null">
+        r_type = #{record.rType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rMember != null">
+        r_member = #{record.rMember,jdbcType=INTEGER},
+      </if>
+      <if test="record.rOrder != null">
+        r_order = #{record.rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.rPrice != null">
+        r_price = #{record.rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rCreated != null">
+        r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rUpdated != null">
+        r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rIntfield1 != null">
+        r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.rIntfield2 != null">
+        r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.rStringfield1 != null">
+        r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rStringfield2 != null">
+        r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rDatefield1 != null">
+        r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.rDatefield2 != null">
+        r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.rDatetimefield1 != null">
+        r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rDatetimefield2 != null">
+        r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rBoolfield1 != null">
+        r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="record.rBoolfield2 != null">
+        r_boolField2 = #{record.rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set r_id = #{record.rId,jdbcType=INTEGER},
+      r_number = #{record.rNumber,jdbcType=VARCHAR},
+      r_type = #{record.rType,jdbcType=VARCHAR},
+      r_member = #{record.rMember,jdbcType=INTEGER},
+      r_order = #{record.rOrder,jdbcType=INTEGER},
+      r_price = #{record.rPrice,jdbcType=DOUBLE},
+      r_created = #{record.rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{record.rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{record.rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{record.rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{record.rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{record.rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{record.rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{record.rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{record.rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{record.rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{record.rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{record.rBoolfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    <set>
+      <if test="rNumber != null">
+        r_number = #{rNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rType != null">
+        r_type = #{rType,jdbcType=VARCHAR},
+      </if>
+      <if test="rMember != null">
+        r_member = #{rMember,jdbcType=INTEGER},
+      </if>
+      <if test="rOrder != null">
+        r_order = #{rOrder,jdbcType=INTEGER},
+      </if>
+      <if test="rPrice != null">
+        r_price = #{rPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="rCreated != null">
+        r_created = #{rCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rUpdated != null">
+        r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rIntfield1 != null">
+        r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="rIntfield2 != null">
+        r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="rStringfield1 != null">
+        r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="rStringfield2 != null">
+        r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="rDatefield1 != null">
+        r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      </if>
+      <if test="rDatefield2 != null">
+        r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      </if>
+      <if test="rDatetimefield1 != null">
+        r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rDatetimefield2 != null">
+        r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rBoolfield1 != null">
+        r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      </if>
+      <if test="rBoolfield2 != null">
+        r_boolField2 = #{rBoolfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Room">
+    update room
+    set r_number = #{rNumber,jdbcType=VARCHAR},
+      r_type = #{rType,jdbcType=VARCHAR},
+      r_member = #{rMember,jdbcType=INTEGER},
+      r_order = #{rOrder,jdbcType=INTEGER},
+      r_price = #{rPrice,jdbcType=DOUBLE},
+      r_created = #{rCreated,jdbcType=TIMESTAMP},
+      r_updated = #{rUpdated,jdbcType=TIMESTAMP},
+      r_intField1 = #{rIntfield1,jdbcType=INTEGER},
+      r_intField2 = #{rIntfield2,jdbcType=INTEGER},
+      r_stringField1 = #{rStringfield1,jdbcType=VARCHAR},
+      r_stringField2 = #{rStringfield2,jdbcType=VARCHAR},
+      r_dateField1 = #{rDatefield1,jdbcType=DATE},
+      r_dateField2 = #{rDatefield2,jdbcType=DATE},
+      r_dateTimeField1 = #{rDatetimefield1,jdbcType=TIMESTAMP},
+      r_dateTimeField2 = #{rDatetimefield2,jdbcType=TIMESTAMP},
+      r_boolField1 = #{rBoolfield1,jdbcType=BIT},
+      r_boolField2 = #{rBoolfield2,jdbcType=BIT}
+    where r_id = #{rId,jdbcType=INTEGER}
+  </update>
+</mapper>
