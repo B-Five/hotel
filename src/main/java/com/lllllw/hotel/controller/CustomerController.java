@@ -18,8 +18,6 @@ public class CustomerController {
 	
 	@RequestMapping(value = "/showName")
 	public String showCustomerName(HttpServletRequest request,Model model){
-		System.out.println("ShowCustomerName");
-		System.out.println(request.getParameter("cid"));
 		int cid = Integer.parseInt(request.getParameter("cid"));
 		Customer customer = customerMapper.selectByPrimaryKey(cid);
 		if(customer != null){
@@ -29,5 +27,10 @@ public class CustomerController {
 		}
 		request.setAttribute("error", "没有找到该用户");
 		return "error";
+	}
+	
+	@RequestMapping(value = "/index")
+	public String showIndex(HttpServletRequest request,Model model){
+		return "front/index";
 	}
 }

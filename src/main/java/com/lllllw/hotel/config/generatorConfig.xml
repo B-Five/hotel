@@ -49,6 +49,7 @@
             <property
                 name="enableSubPackages"
                 value="true" />
+                <property name="mergeable" value="true"></property>
         </sqlMapGenerator>
         <!--生成Dao类存放位置 -->
         <javaClientGenerator
