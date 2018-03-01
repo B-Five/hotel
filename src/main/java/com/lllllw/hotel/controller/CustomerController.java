@@ -33,4 +33,9 @@ public class CustomerController {
 	public String showIndex(HttpServletRequest request,Model model){
 		return "front/index";
 	}
+	
+	@RequestMapping(value = "/login")
+	public String showLogin(HttpServletRequest request,Model model){
+		return "front/login";
+	}
 }

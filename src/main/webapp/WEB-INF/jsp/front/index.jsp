@@ -8,7 +8,7 @@
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 
     <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-    <link rel="stylesheet" href="resource/css/Airbnb.css">
+    <link rel="stylesheet" href="resource/css/index.css">
 
   </head>
 
@@ -21,7 +21,7 @@
         </ul>
         <ul class="pull-right">
           <li><a href="#">注册</a></li>
-          <li><a href="#">登录</a></li>
+          <li><a href="/hotel/login">登录</a></li>
           <li><a href="#">Help</a></li>
         </ul>
       </div>
@@ -42,23 +42,26 @@
             <div class="row">
                  <div class="col-md-4">
                     <div class="thumbnail">
-                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_321_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.637.358.jpeg"/>
+                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_036_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.468.263.jpeg"/>
                     </div>
                     <div class="thumbnail">
-                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_322_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.720.405.jpeg"/>
-                    </div>
-                 </div>
-                 <div class="col-md-4">
-                    <div class="thumbnail">
-                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_324_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.637.358.jpeg"/>
-                    </div>
-                    <div class="thumbnail">
-                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_319_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.468.263.jpeg"/>
+                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_039_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.468.263.jpeg"/>
                     </div>
                  </div>
                  <div class="col-md-4">
                     <div class="thumbnail">
-                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_323_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.720.405.jpeg"/>
+                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_198_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.468.263.jpeg"/>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_327_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.468.263.jpeg"/>
+                    </div>
+                 </div>
+                 <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_329_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.637.358.jpeg"/>
+                    </div>
+                    <div class="thumbnail">
+                        <img src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_045_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.468.263.jpeg"/>
                     </div>
 
                  </div>
