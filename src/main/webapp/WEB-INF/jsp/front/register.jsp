@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登录</title>
+<title>注册</title>
 <link rel="stylesheet" href="resource/css/bootstrap.css">
 <link rel="stylesheet" href="resource/css/reset.css" />
 <link rel="stylesheet" href="resource/css/common.css" />
@@ -17,7 +17,7 @@
 				<li><a href="/hotel/index">首页</a></li>
 			</ul>
 			<ul class="pull-right">
-				<li><a href="/hotel/register">注册</a></li>
+				<li><a href="#">注册</a></li>
 				<li><a href="/hotel/login">登录</a></li>
 				<li><a href="#">Help</a></li>
 			</ul>
@@ -31,34 +31,46 @@
 			<div class="login_box">
 
 				<div class="login_form">
-					<div class="login_title">登录</div>
+					<div class="login_title">注册</div>
+					<form action="" method="post">
 
 						<div class="form_text_ipt">
-							<input id="email" name="email" type="text" placeholder="邮箱">
+							<input name="email" type="text" placeholder="邮箱">
 						</div>
 						<div class="ececk_warning">
 							<span>数据不能为空</span>
 						</div>
 						<div class="form_text_ipt">
-							<input id="password" name="password" type="password" placeholder="密码">
+							<input name="password" type="password" placeholder="密码">
 						</div>
 						<div class="ececk_warning">
 							<span>数据不能为空</span>
 						</div>
-						<div class="form_check_ipt">
-							<div class="left check_left">
-								<label><input name="" type="checkbox"> 下次自动登录</label>
-							</div>
-							<div class="right check_right">
-								<a href="#">忘记密码</a>
-							</div>
+						<div class="form_text_ipt">
+							<input name="repassword" type="password" placeholder="重复密码">
+						</div>
+						<div class="ececk_warning">
+							<span>数据不能为空</span>
+						</div>
+						<div class="form_text_ipt">
+							<input name="username" type="text" placeholder="姓名">
+						</div>
+						<div class="ececk_warning">
+							<span>数据不能为空</span>
+						</div>
+						<div class="form_text_ipt">
+							<input name="phone" type="text" placeholder="手机号">
+						</div>
+						<div class="ececk_warning">
+							<span>数据不能为空</span>
 						</div>
 						<div class="form_btn">
-							<button type="button" id="submitbtn">登录</button>
+							<button type="button">注册</button>
 						</div>
 						<div class="form_reg_btn">
-							<span>还没有帐号？</span><a href="/hotel/register">马上注册</a>
+							<span>已有帐号？</span><a href="/hotel/login">马上登录</a>
 						</div>
+					</form>
 					<div class="other_login">
 						<div class="left other_left">
 							<span>其它登录方式</span>
@@ -71,7 +83,7 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="resource/js/jquery.min.js"></script>
-	<script type="text/javascript" src="resource/js/common.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>
