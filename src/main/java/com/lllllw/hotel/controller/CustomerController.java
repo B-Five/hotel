@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lllllw.hotel.dao.CustomerMapper;
 import com.lllllw.hotel.model.Customer;
 import com.lllllw.hotel.service.CustomerService;
 
@@ -20,46 +19,55 @@ import com.lllllw.hotel.service.CustomerService;
 public class CustomerController {
 	
 	@Autowired
-	private CustomerMapper customerMapper;
-	
-	@Autowired
 	private CustomerService customerService;
 	
 	/**
 	 * 事例方法
 	 */
-	@RequestMapping(value = "/showName")
-	public String showCustomerName(HttpServletRequest request,Model model){
-		int cid = Integer.parseInt(request.getParameter("cid"));
-		Customer customer = customerMapper.selectByPrimaryKey(cid);
-		if(customer != null){
-			request.setAttribute("name", customer.getcName());
-			model.addAttribute("name", customer.getcName());
-			return "showName";
-		}
-		request.setAttribute("error", "没有找到该用户");
-		return "error";
-	}
 	
 	@RequestMapping(value = "/loginCheck")
 	public void loginCheck(HttpServletRequest request,HttpSession session,HttpServletResponse response,Model model) throws IOException{
 		PrintWriter out = response.getWriter();
 		String email = request.getParameter("email");
-		System.out.println(email);
 		String password = request.getParameter("password");
 		Customer customer = customerService.loginCheck(email, password);
 		if( customer!= null ){
-			session.setAttribute("user", customer);
+			session.setAttribute("customer", customer);
 			out.write("success");
 		}
 		else{
-			out.write("success");
+			out.write("failure");
 		}
+	}
+	
+	@RequestMapping(value = "/registerCheck")
+	public void registerCheck(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		Customer customer = new Customer();
+		customer.setcEmail(request.getParameter("email"));
+		customer.setcPassword(request.getParameter("password"));
+		customer.setcLastname(request.getParameter("lastname"));
+		customer.setcFirstname(request.getParameter("firstname"));
+		customer.setcPhone(request.getParameter("phone"));
+		if(customerService.createCustomer(customer))
+			out.write("success");
+		else
+			out.write("failure");
+	}
+	
+	@RequestMapping(value = "/emailCheck")
+	public void emailCheck(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		String email = request.getParameter("email");
+		if(customerService.emailCheck(email))
+			out.write("success");
+		else
+			out.write("failure");
 	}
 	
 	@RequestMapping(value = "/loginOut")
 	public String loginOut(HttpSession session,Model model){
-		session.removeAttribute("user");
+		session.removeAttribute("customer");
 		return "front/index";
 	}
 	

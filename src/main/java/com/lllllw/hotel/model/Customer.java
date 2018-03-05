@@ -5,7 +5,9 @@ import java.util.Date;
 public class Customer {
     private Integer cId;
 
-    private String cName;
+    private String cLastname;
+
+    private String cFirstname;
 
     private String cPassword;
 
@@ -47,12 +49,20 @@ public class Customer {
         this.cId = cId;
     }
 
-    public String getcName() {
-        return cName;
+    public String getcLastname() {
+        return cLastname;
     }
 
-    public void setcName(String cName) {
-        this.cName = cName == null ? null : cName.trim();
+    public void setcLastname(String cLastname) {
+        this.cLastname = cLastname == null ? null : cLastname.trim();
+    }
+
+    public String getcFirstname() {
+        return cFirstname;
+    }
+
+    public void setcFirstname(String cFirstname) {
+        this.cFirstname = cFirstname == null ? null : cFirstname.trim();
     }
 
     public String getcPassword() {

@@ -54,7 +54,7 @@
 							</div>
 						</div>
 						<div class="form_btn">
-							<button type="button" id="submitbtn">登录</button>
+							<button type="button" id="loginbtn">登录</button>
 						</div>
 						<div class="form_reg_btn">
 							<span>还没有帐号？</span><a href="/hotel/register">马上注册</a>

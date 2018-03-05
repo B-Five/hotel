@@ -3,11 +3,12 @@
 <mapper namespace="com.lllllw.hotel.dao.CustomerMapper">
   <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Customer">
     <id column="c_id" jdbcType="INTEGER" property="cId" />
-    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="c_lastname" jdbcType="VARCHAR" property="cLastname" />
+    <result column="c_firstname" jdbcType="VARCHAR" property="cFirstname" />
     <result column="c_password" jdbcType="VARCHAR" property="cPassword" />
     <result column="c_phone" jdbcType="VARCHAR" property="cPhone" />
     <result column="c_email" jdbcType="VARCHAR" property="cEmail" />
-    <result column="c_gender" jdbcType="VARCHAR" property="cGender" />
+    <result column="c_gender" jdbcType="CHAR" property="cGender" />
     <result column="c_created" jdbcType="TIMESTAMP" property="cCreated" />
     <result column="c_updated" jdbcType="TIMESTAMP" property="cUpdated" />
     <result column="c_intField1" jdbcType="INTEGER" property="cIntfield1" />
@@ -80,9 +81,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    c_id, c_name, c_password, c_phone, c_email, c_gender, c_created, c_updated, c_intField1, 
-    c_intField2, c_stringField1, c_stringField2, c_dateField1, c_dateField2, c_datetimeField1, 
-    c_datetimeField2, c_boolField1, c_boolField2
+    c_id, c_lastname, c_firstname, c_password, c_phone, c_email, c_gender, c_created, 
+    c_updated, c_intField1, c_intField2, c_stringField1, c_stringField2, c_dateField1, 
+    c_dateField2, c_datetimeField1, c_datetimeField2, c_boolField1, c_boolField2
   </sql>
   <select id="selectByExample" parameterType="com.lllllw.hotel.model.CustomerExample" resultMap="BaseResultMap">
     select
@@ -116,20 +117,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lllllw.hotel.model.Customer">
-    insert into customer (c_id, c_name, c_password, 
-      c_phone, c_email, c_gender, 
-      c_created, c_updated, c_intField1, 
-      c_intField2, c_stringField1, c_stringField2, 
-      c_dateField1, c_dateField2, c_datetimeField1, 
-      c_datetimeField2, c_boolField1, c_boolField2
-      )
-    values (#{cId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{cPassword,jdbcType=VARCHAR}, 
-      #{cPhone,jdbcType=VARCHAR}, #{cEmail,jdbcType=VARCHAR}, #{cGender,jdbcType=VARCHAR}, 
-      #{cCreated,jdbcType=TIMESTAMP}, #{cUpdated,jdbcType=TIMESTAMP}, #{cIntfield1,jdbcType=INTEGER}, 
-      #{cIntfield2,jdbcType=INTEGER}, #{cStringfield1,jdbcType=VARCHAR}, #{cStringfield2,jdbcType=VARCHAR}, 
-      #{cDatefield1,jdbcType=DATE}, #{cDatefield2,jdbcType=DATE}, #{cDatetimefield1,jdbcType=TIMESTAMP}, 
-      #{cDatetimefield2,jdbcType=TIMESTAMP}, #{cBoolfield1,jdbcType=BIT}, #{cBoolfield2,jdbcType=BIT}
-      )
+    insert into customer (c_id, c_lastname, c_firstname, 
+      c_password, c_phone, c_email, 
+      c_gender, c_created, c_updated, 
+      c_intField1, c_intField2, c_stringField1, 
+      c_stringField2, c_dateField1, c_dateField2, 
+      c_datetimeField1, c_datetimeField2, c_boolField1, 
+      c_boolField2)
+    values (#{cId,jdbcType=INTEGER}, #{cLastname,jdbcType=VARCHAR}, #{cFirstname,jdbcType=VARCHAR}, 
+      #{cPassword,jdbcType=VARCHAR}, #{cPhone,jdbcType=VARCHAR}, #{cEmail,jdbcType=VARCHAR}, 
+      #{cGender,jdbcType=CHAR}, #{cCreated,jdbcType=TIMESTAMP}, #{cUpdated,jdbcType=TIMESTAMP}, 
+      #{cIntfield1,jdbcType=INTEGER}, #{cIntfield2,jdbcType=INTEGER}, #{cStringfield1,jdbcType=VARCHAR}, 
+      #{cStringfield2,jdbcType=VARCHAR}, #{cDatefield1,jdbcType=DATE}, #{cDatefield2,jdbcType=DATE}, 
+      #{cDatetimefield1,jdbcType=TIMESTAMP}, #{cDatetimefield2,jdbcType=TIMESTAMP}, #{cBoolfield1,jdbcType=BIT}, 
+      #{cBoolfield2,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Customer">
     insert into customer
@@ -137,8 +138,11 @@
       <if test="cId != null">
         c_id,
       </if>
-      <if test="cName != null">
-        c_name,
+      <if test="cLastname != null">
+        c_lastname,
+      </if>
+      <if test="cFirstname != null">
+        c_firstname,
       </if>
       <if test="cPassword != null">
         c_password,
@@ -193,8 +197,11 @@
       <if test="cId != null">
         #{cId,jdbcType=INTEGER},
       </if>
-      <if test="cName != null">
-        #{cName,jdbcType=VARCHAR},
+      <if test="cLastname != null">
+        #{cLastname,jdbcType=VARCHAR},
+      </if>
+      <if test="cFirstname != null">
+        #{cFirstname,jdbcType=VARCHAR},
       </if>
       <if test="cPassword != null">
         #{cPassword,jdbcType=VARCHAR},
@@ -206,7 +213,7 @@
         #{cEmail,jdbcType=VARCHAR},
       </if>
       <if test="cGender != null">
-        #{cGender,jdbcType=VARCHAR},
+        #{cGender,jdbcType=CHAR},
       </if>
       <if test="cCreated != null">
         #{cCreated,jdbcType=TIMESTAMP},
@@ -258,8 +265,11 @@
       <if test="record.cId != null">
         c_id = #{record.cId,jdbcType=INTEGER},
       </if>
-      <if test="record.cName != null">
-        c_name = #{record.cName,jdbcType=VARCHAR},
+      <if test="record.cLastname != null">
+        c_lastname = #{record.cLastname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cFirstname != null">
+        c_firstname = #{record.cFirstname,jdbcType=VARCHAR},
       </if>
       <if test="record.cPassword != null">
         c_password = #{record.cPassword,jdbcType=VARCHAR},
@@ -271,7 +281,7 @@
         c_email = #{record.cEmail,jdbcType=VARCHAR},
       </if>
       <if test="record.cGender != null">
-        c_gender = #{record.cGender,jdbcType=VARCHAR},
+        c_gender = #{record.cGender,jdbcType=CHAR},
       </if>
       <if test="record.cCreated != null">
         c_created = #{record.cCreated,jdbcType=TIMESTAMP},
@@ -317,11 +327,12 @@
   <update id="updateByExample" parameterType="map">
     update customer
     set c_id = #{record.cId,jdbcType=INTEGER},
-      c_name = #{record.cName,jdbcType=VARCHAR},
+      c_lastname = #{record.cLastname,jdbcType=VARCHAR},
+      c_firstname = #{record.cFirstname,jdbcType=VARCHAR},
       c_password = #{record.cPassword,jdbcType=VARCHAR},
       c_phone = #{record.cPhone,jdbcType=VARCHAR},
       c_email = #{record.cEmail,jdbcType=VARCHAR},
-      c_gender = #{record.cGender,jdbcType=VARCHAR},
+      c_gender = #{record.cGender,jdbcType=CHAR},
       c_created = #{record.cCreated,jdbcType=TIMESTAMP},
       c_updated = #{record.cUpdated,jdbcType=TIMESTAMP},
       c_intField1 = #{record.cIntfield1,jdbcType=INTEGER},
@@ -341,8 +352,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Customer">
     update customer
     <set>
-      <if test="cName != null">
-        c_name = #{cName,jdbcType=VARCHAR},
+      <if test="cLastname != null">
+        c_lastname = #{cLastname,jdbcType=VARCHAR},
+      </if>
+      <if test="cFirstname != null">
+        c_firstname = #{cFirstname,jdbcType=VARCHAR},
       </if>
       <if test="cPassword != null">
         c_password = #{cPassword,jdbcType=VARCHAR},
@@ -354,7 +368,7 @@
         c_email = #{cEmail,jdbcType=VARCHAR},
       </if>
       <if test="cGender != null">
-        c_gender = #{cGender,jdbcType=VARCHAR},
+        c_gender = #{cGender,jdbcType=CHAR},
       </if>
       <if test="cCreated != null">
         c_created = #{cCreated,jdbcType=TIMESTAMP},
@@ -397,11 +411,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Customer">
     update customer
-    set c_name = #{cName,jdbcType=VARCHAR},
+    set c_lastname = #{cLastname,jdbcType=VARCHAR},
+      c_firstname = #{cFirstname,jdbcType=VARCHAR},
       c_password = #{cPassword,jdbcType=VARCHAR},
       c_phone = #{cPhone,jdbcType=VARCHAR},
       c_email = #{cEmail,jdbcType=VARCHAR},
-      c_gender = #{cGender,jdbcType=VARCHAR},
+      c_gender = #{cGender,jdbcType=CHAR},
       c_created = #{cCreated,jdbcType=TIMESTAMP},
       c_updated = #{cUpdated,jdbcType=TIMESTAMP},
       c_intField1 = #{cIntfield1,jdbcType=INTEGER},

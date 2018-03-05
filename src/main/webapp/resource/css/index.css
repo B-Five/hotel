@@ -34,7 +34,33 @@
   font-size: 20px;
   color: #fff;
 }
-
+.order-container{
+	width: 100%;
+	height: 70px;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+.order-container1{
+	margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.order1{
+	margin-right: auto;
+    margin-left: auto;
+	float: left;
+}
+.order2{
+	margin-right: auto;
+    margin-left: auto;
+	float: left;
+}
+.order3{
+	margin-right: auto;
+    margin-left: auto;
+	float: right;
+}
 .neighborhood-guides{
     abackground-color:#efefef;
     border-bottom:1px solid #dbdbdb;

@@ -19,8 +19,13 @@ public class testDao {
 	
 	@Test
 	public void testcustomerMapper(){
-		Customer customer = customerMapper.selectByPrimaryKey(1);
-		System.out.println(customer.getcName());
+		Customer customer = new Customer();
+		customer.setcLastname("小");
+		customer.setcFirstname("焉");
+		customer.setcEmail("12345@123.com");
+		customer.setcPassword("1");
+		System.out.println(customerMapper.insert(customer));
+		
 	}
 	
 }

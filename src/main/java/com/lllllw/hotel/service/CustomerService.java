@@ -10,19 +10,37 @@ import com.lllllw.hotel.model.CustomerExample.Criteria;
 
 @Service
 public class CustomerService {
-	
+
 	@Autowired
 	private CustomerMapper customerMapper;
-	
-	public Customer loginCheck(String email,String password){
+
+	public Customer loginCheck(String email, String password) {
 		CustomerExample example = new CustomerExample();
-		Criteria criteria =  example.createCriteria();
+		Criteria criteria = example.createCriteria();
 		criteria.andCEmailEqualTo(email);
 		criteria.andCPasswordEqualTo(password);
-		Customer customer = customerMapper.selectByExample(example).get(0);
-		if(customer != null)
+		if (customerMapper.selectByExample(example).size() > 0) {
+			Customer customer = customerMapper.selectByExample(example).get(0);
+			customer.setcPassword(null);
 			return customer;
-		else
+		} else
 			return null;
+	}
+
+	public boolean emailCheck(String email) {
+		CustomerExample example = new CustomerExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andCEmailEqualTo(email);
+		if (customerMapper.countByExample(example) == 0)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean createCustomer(Customer customer) {
+		if (customerMapper.insert(customer) == 1)
+			return true;
+		else
+			return false;
 	}
 }
