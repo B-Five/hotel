@@ -6,8 +6,10 @@
 <html>
 
 <head>
+<title>炉石酒馆</title>
 <link rel="stylesheet" href="resource/css/bootstrap.css">
 <link rel="stylesheet" href="resource/css/index.css">
+<link rel="stylesheet" href="resource/css/daterangepicker.min.css">
 
 </head>
 
@@ -15,7 +17,7 @@
 	<div class="nav">
 		<div class="container">
 			<ul class="pull-left">
-				<li><a href="#">首页</a></li>
+				<li><a href="/hotel/index">首页</a></li>
 				<%
 					if (session.getAttribute("customer") != null) {
 				%>
@@ -47,14 +49,6 @@
 			<h1>XX酒店</h1>
 			<p>在这邂逅不期而遇的美好，人生从此更丰厚</p>
 			<a href="#">立即预定！</a>
-		</div>
-	</div>
-
-	<div class="order-container">
-		<div class="order-container1">
-			<div class="order1">444</div>
-			<div class="order2">555</div>
-			<div class="order3">666</div>
 		</div>
 	</div>
 
@@ -90,15 +84,36 @@
 					</div>
 					<div class="thumbnail">
 						<img
-							src="https://www.fourseasons.com/content/dam/fourseasons/images/web/MAC/MAC_045_aspect16x9.jpg/jcr:content/renditions/cq5dam.web.468.263.jpeg" />
+							src="https://www.fourseasons.com/alt/img-opt/publish/content/dam/fourseasons/images/web/HKG/HKG_154_aspect16x9.jpg/60.jpg" />
 					</div>
 
 				</div>
+			</div>
+		</div>
 
-
+		<div class="order-container">
+			<div class="order-container1">
+				<form action="searchPage" method="post">
+					<div class="order1">
+						<h4>时间</h4>
+						<input id="date-range0" name="time" size="30" value="入住日期  to 退房日期 ">
+					</div>
+					<div class="order2">
+						<h4>房客</h4>
+						<input id="member" name="member" list="test" type="text"
+							value="">
+						<datalist id="test">
+						<option value="1">一位房客</option>
+						<option value="2">两位房客</option>
+						<option value="3">三位房客</option>
+						</datalist>
+						<button type="submit" class="btn btn-primary">搜索</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+
 
 
 	<div class="learn-more">
@@ -132,4 +147,9 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="resource/js/moment.min.js"></script>
+<script type="text/javascript" src="resource/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="resource/js/jquery.daterangepicker.min.js"></script>
+<script type="text/javascript" src="resource/js/common.js"></script>
 </html>

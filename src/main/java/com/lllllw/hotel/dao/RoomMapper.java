@@ -2,6 +2,8 @@ package com.lllllw.hotel.dao;
 
 import com.lllllw.hotel.model.Room;
 import com.lllllw.hotel.model.RoomExample;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface RoomMapper {
     int updateByPrimaryKeySelective(Room record);
 
     int updateByPrimaryKey(Room record);
+    
+    List<Room> selectByDate(Date start,Date end,int type,int member);
 }

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lllllw.hotel.dao.StaffMapper">
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Staff">
+    <id column="s_id" jdbcType="INTEGER" property="sId" />
+    <result column="s_code" jdbcType="VARCHAR" property="sCode" />
+    <result column="s_name" jdbcType="VARCHAR" property="sName" />
+    <result column="s_pssword" jdbcType="VARCHAR" property="sPssword" />
+    <result column="s_gender" jdbcType="CHAR" property="sGender" />
+    <result column="s_job" jdbcType="VARCHAR" property="sJob" />
+    <result column="s_permission" jdbcType="INTEGER" property="sPermission" />
+    <result column="s_remarks" jdbcType="VARCHAR" property="sRemarks" />
+    <result column="s_created" jdbcType="TIMESTAMP" property="sCreated" />
+    <result column="s_updated" jdbcType="TIMESTAMP" property="sUpdated" />
+    <result column="s_intField1" jdbcType="INTEGER" property="sIntfield1" />
+    <result column="s_intField2" jdbcType="INTEGER" property="sIntfield2" />
+    <result column="s_stringField1" jdbcType="VARCHAR" property="sStringfield1" />
+    <result column="s_stringField2" jdbcType="VARCHAR" property="sStringfield2" />
+    <result column="s_dateField1" jdbcType="DATE" property="sDatefield1" />
+    <result column="s_dateField2" jdbcType="DATE" property="sDatefield2" />
+    <result column="s_datetimeField1" jdbcType="TIMESTAMP" property="sDatetimefield1" />
+    <result column="s_datetimeField2" jdbcType="TIMESTAMP" property="sDatetimefield2" />
+    <result column="s_booleanField1" jdbcType="BIT" property="sBooleanfield1" />
+    <result column="s_booleanField2" jdbcType="BIT" property="sBooleanfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    s_id, s_code, s_name, s_pssword, s_gender, s_job, s_permission, s_remarks, s_created, 
+    s_updated, s_intField1, s_intField2, s_stringField1, s_stringField2, s_dateField1, 
+    s_dateField2, s_datetimeField1, s_datetimeField2, s_booleanField1, s_booleanField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.StaffExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from staff
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from staff
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from staff
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.StaffExample">
+    delete from staff
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Staff">
+    insert into staff (s_id, s_code, s_name, 
+      s_pssword, s_gender, s_job, 
+      s_permission, s_remarks, s_created, 
+      s_updated, s_intField1, s_intField2, 
+      s_stringField1, s_stringField2, s_dateField1, 
+      s_dateField2, s_datetimeField1, s_datetimeField2, 
+      s_booleanField1, s_booleanField2)
+    values (#{sId,jdbcType=INTEGER}, #{sCode,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, 
+      #{sPssword,jdbcType=VARCHAR}, #{sGender,jdbcType=CHAR}, #{sJob,jdbcType=VARCHAR}, 
+      #{sPermission,jdbcType=INTEGER}, #{sRemarks,jdbcType=VARCHAR}, #{sCreated,jdbcType=TIMESTAMP}, 
+      #{sUpdated,jdbcType=TIMESTAMP}, #{sIntfield1,jdbcType=INTEGER}, #{sIntfield2,jdbcType=INTEGER}, 
+      #{sStringfield1,jdbcType=VARCHAR}, #{sStringfield2,jdbcType=VARCHAR}, #{sDatefield1,jdbcType=DATE}, 
+      #{sDatefield2,jdbcType=DATE}, #{sDatetimefield1,jdbcType=TIMESTAMP}, #{sDatetimefield2,jdbcType=TIMESTAMP}, 
+      #{sBooleanfield1,jdbcType=BIT}, #{sBooleanfield2,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Staff">
+    insert into staff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        s_id,
+      </if>
+      <if test="sCode != null">
+        s_code,
+      </if>
+      <if test="sName != null">
+        s_name,
+      </if>
+      <if test="sPssword != null">
+        s_pssword,
+      </if>
+      <if test="sGender != null">
+        s_gender,
+      </if>
+      <if test="sJob != null">
+        s_job,
+      </if>
+      <if test="sPermission != null">
+        s_permission,
+      </if>
+      <if test="sRemarks != null">
+        s_remarks,
+      </if>
+      <if test="sCreated != null">
+        s_created,
+      </if>
+      <if test="sUpdated != null">
+        s_updated,
+      </if>
+      <if test="sIntfield1 != null">
+        s_intField1,
+      </if>
+      <if test="sIntfield2 != null">
+        s_intField2,
+      </if>
+      <if test="sStringfield1 != null">
+        s_stringField1,
+      </if>
+      <if test="sStringfield2 != null">
+        s_stringField2,
+      </if>
+      <if test="sDatefield1 != null">
+        s_dateField1,
+      </if>
+      <if test="sDatefield2 != null">
+        s_dateField2,
+      </if>
+      <if test="sDatetimefield1 != null">
+        s_datetimeField1,
+      </if>
+      <if test="sDatetimefield2 != null">
+        s_datetimeField2,
+      </if>
+      <if test="sBooleanfield1 != null">
+        s_booleanField1,
+      </if>
+      <if test="sBooleanfield2 != null">
+        s_booleanField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="sCode != null">
+        #{sCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null">
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPssword != null">
+        #{sPssword,jdbcType=VARCHAR},
+      </if>
+      <if test="sGender != null">
+        #{sGender,jdbcType=CHAR},
+      </if>
+      <if test="sJob != null">
+        #{sJob,jdbcType=VARCHAR},
+      </if>
+      <if test="sPermission != null">
+        #{sPermission,jdbcType=INTEGER},
+      </if>
+      <if test="sRemarks != null">
+        #{sRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="sCreated != null">
+        #{sCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdated != null">
+        #{sUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sIntfield1 != null">
+        #{sIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="sIntfield2 != null">
+        #{sIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="sStringfield1 != null">
+        #{sStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="sStringfield2 != null">
+        #{sStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="sDatefield1 != null">
+        #{sDatefield1,jdbcType=DATE},
+      </if>
+      <if test="sDatefield2 != null">
+        #{sDatefield2,jdbcType=DATE},
+      </if>
+      <if test="sDatetimefield1 != null">
+        #{sDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sDatetimefield2 != null">
+        #{sDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sBooleanfield1 != null">
+        #{sBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="sBooleanfield2 != null">
+        #{sBooleanfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.StaffExample" resultType="java.lang.Long">
+    select count(*) from staff
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update staff
+    <set>
+      <if test="record.sId != null">
+        s_id = #{record.sId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sCode != null">
+        s_code = #{record.sCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sName != null">
+        s_name = #{record.sName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sPssword != null">
+        s_pssword = #{record.sPssword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sGender != null">
+        s_gender = #{record.sGender,jdbcType=CHAR},
+      </if>
+      <if test="record.sJob != null">
+        s_job = #{record.sJob,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sPermission != null">
+        s_permission = #{record.sPermission,jdbcType=INTEGER},
+      </if>
+      <if test="record.sRemarks != null">
+        s_remarks = #{record.sRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sCreated != null">
+        s_created = #{record.sCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sUpdated != null">
+        s_updated = #{record.sUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sIntfield1 != null">
+        s_intField1 = #{record.sIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.sIntfield2 != null">
+        s_intField2 = #{record.sIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.sStringfield1 != null">
+        s_stringField1 = #{record.sStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sStringfield2 != null">
+        s_stringField2 = #{record.sStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sDatefield1 != null">
+        s_dateField1 = #{record.sDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.sDatefield2 != null">
+        s_dateField2 = #{record.sDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.sDatetimefield1 != null">
+        s_datetimeField1 = #{record.sDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sDatetimefield2 != null">
+        s_datetimeField2 = #{record.sDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sBooleanfield1 != null">
+        s_booleanField1 = #{record.sBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="record.sBooleanfield2 != null">
+        s_booleanField2 = #{record.sBooleanfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update staff
+    set s_id = #{record.sId,jdbcType=INTEGER},
+      s_code = #{record.sCode,jdbcType=VARCHAR},
+      s_name = #{record.sName,jdbcType=VARCHAR},
+      s_pssword = #{record.sPssword,jdbcType=VARCHAR},
+      s_gender = #{record.sGender,jdbcType=CHAR},
+      s_job = #{record.sJob,jdbcType=VARCHAR},
+      s_permission = #{record.sPermission,jdbcType=INTEGER},
+      s_remarks = #{record.sRemarks,jdbcType=VARCHAR},
+      s_created = #{record.sCreated,jdbcType=TIMESTAMP},
+      s_updated = #{record.sUpdated,jdbcType=TIMESTAMP},
+      s_intField1 = #{record.sIntfield1,jdbcType=INTEGER},
+      s_intField2 = #{record.sIntfield2,jdbcType=INTEGER},
+      s_stringField1 = #{record.sStringfield1,jdbcType=VARCHAR},
+      s_stringField2 = #{record.sStringfield2,jdbcType=VARCHAR},
+      s_dateField1 = #{record.sDatefield1,jdbcType=DATE},
+      s_dateField2 = #{record.sDatefield2,jdbcType=DATE},
+      s_datetimeField1 = #{record.sDatetimefield1,jdbcType=TIMESTAMP},
+      s_datetimeField2 = #{record.sDatetimefield2,jdbcType=TIMESTAMP},
+      s_booleanField1 = #{record.sBooleanfield1,jdbcType=BIT},
+      s_booleanField2 = #{record.sBooleanfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Staff">
+    update staff
+    <set>
+      <if test="sCode != null">
+        s_code = #{sCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null">
+        s_name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sPssword != null">
+        s_pssword = #{sPssword,jdbcType=VARCHAR},
+      </if>
+      <if test="sGender != null">
+        s_gender = #{sGender,jdbcType=CHAR},
+      </if>
+      <if test="sJob != null">
+        s_job = #{sJob,jdbcType=VARCHAR},
+      </if>
+      <if test="sPermission != null">
+        s_permission = #{sPermission,jdbcType=INTEGER},
+      </if>
+      <if test="sRemarks != null">
+        s_remarks = #{sRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="sCreated != null">
+        s_created = #{sCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sUpdated != null">
+        s_updated = #{sUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sIntfield1 != null">
+        s_intField1 = #{sIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="sIntfield2 != null">
+        s_intField2 = #{sIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="sStringfield1 != null">
+        s_stringField1 = #{sStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="sStringfield2 != null">
+        s_stringField2 = #{sStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="sDatefield1 != null">
+        s_dateField1 = #{sDatefield1,jdbcType=DATE},
+      </if>
+      <if test="sDatefield2 != null">
+        s_dateField2 = #{sDatefield2,jdbcType=DATE},
+      </if>
+      <if test="sDatetimefield1 != null">
+        s_datetimeField1 = #{sDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sDatetimefield2 != null">
+        s_datetimeField2 = #{sDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sBooleanfield1 != null">
+        s_booleanField1 = #{sBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="sBooleanfield2 != null">
+        s_booleanField2 = #{sBooleanfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Staff">
+    update staff
+    set s_code = #{sCode,jdbcType=VARCHAR},
+      s_name = #{sName,jdbcType=VARCHAR},
+      s_pssword = #{sPssword,jdbcType=VARCHAR},
+      s_gender = #{sGender,jdbcType=CHAR},
+      s_job = #{sJob,jdbcType=VARCHAR},
+      s_permission = #{sPermission,jdbcType=INTEGER},
+      s_remarks = #{sRemarks,jdbcType=VARCHAR},
+      s_created = #{sCreated,jdbcType=TIMESTAMP},
+      s_updated = #{sUpdated,jdbcType=TIMESTAMP},
+      s_intField1 = #{sIntfield1,jdbcType=INTEGER},
+      s_intField2 = #{sIntfield2,jdbcType=INTEGER},
+      s_stringField1 = #{sStringfield1,jdbcType=VARCHAR},
+      s_stringField2 = #{sStringfield2,jdbcType=VARCHAR},
+      s_dateField1 = #{sDatefield1,jdbcType=DATE},
+      s_dateField2 = #{sDatefield2,jdbcType=DATE},
+      s_datetimeField1 = #{sDatetimefield1,jdbcType=TIMESTAMP},
+      s_datetimeField2 = #{sDatetimefield2,jdbcType=TIMESTAMP},
+      s_booleanField1 = #{sBooleanfield1,jdbcType=BIT},
+      s_booleanField2 = #{sBooleanfield2,jdbcType=BIT}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>

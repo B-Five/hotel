@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lllllw.hotel.dao.ServicesTypeMapper">
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.ServicesType">
+    <id column="st_id" jdbcType="INTEGER" property="stId" />
+    <result column="st_name" jdbcType="VARCHAR" property="stName" />
+    <result column="st_desc" jdbcType="VARCHAR" property="stDesc" />
+    <result column="st_price" jdbcType="DOUBLE" property="stPrice" />
+    <result column="st_created" jdbcType="TIMESTAMP" property="stCreated" />
+    <result column="st_updated" jdbcType="TIMESTAMP" property="stUpdated" />
+    <result column="st_intField1" jdbcType="INTEGER" property="stIntfield1" />
+    <result column="st_intField2" jdbcType="INTEGER" property="stIntfield2" />
+    <result column="st_stringField1" jdbcType="VARCHAR" property="stStringfield1" />
+    <result column="st_stringField2" jdbcType="VARCHAR" property="stStringfield2" />
+    <result column="st_datetimeField1" jdbcType="TIMESTAMP" property="stDatetimefield1" />
+    <result column="st_datetimeField2" jdbcType="TIMESTAMP" property="stDatetimefield2" />
+    <result column="st_dateField1" jdbcType="DATE" property="stDatefield1" />
+    <result column="st_dateField2" jdbcType="DATE" property="stDatefield2" />
+    <result column="st_booleanField1" jdbcType="BIT" property="stBooleanfield1" />
+    <result column="st_booleanField2" jdbcType="BIT" property="stBooleanfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    st_id, st_name, st_desc, st_price, st_created, st_updated, st_intField1, st_intField2, 
+    st_stringField1, st_stringField2, st_datetimeField1, st_datetimeField2, st_dateField1, 
+    st_dateField2, st_booleanField1, st_booleanField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.ServicesTypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from servicestype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from servicestype
+    where st_id = #{stId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from servicestype
+    where st_id = #{stId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.ServicesTypeExample">
+    delete from servicestype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.ServicesType">
+    insert into servicestype (st_id, st_name, st_desc, 
+      st_price, st_created, st_updated, 
+      st_intField1, st_intField2, st_stringField1, 
+      st_stringField2, st_datetimeField1, st_datetimeField2, 
+      st_dateField1, st_dateField2, st_booleanField1, 
+      st_booleanField2)
+    values (#{stId,jdbcType=INTEGER}, #{stName,jdbcType=VARCHAR}, #{stDesc,jdbcType=VARCHAR}, 
+      #{stPrice,jdbcType=DOUBLE}, #{stCreated,jdbcType=TIMESTAMP}, #{stUpdated,jdbcType=TIMESTAMP}, 
+      #{stIntfield1,jdbcType=INTEGER}, #{stIntfield2,jdbcType=INTEGER}, #{stStringfield1,jdbcType=VARCHAR}, 
+      #{stStringfield2,jdbcType=VARCHAR}, #{stDatetimefield1,jdbcType=TIMESTAMP}, #{stDatetimefield2,jdbcType=TIMESTAMP}, 
+      #{stDatefield1,jdbcType=DATE}, #{stDatefield2,jdbcType=DATE}, #{stBooleanfield1,jdbcType=BIT}, 
+      #{stBooleanfield2,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.ServicesType">
+    insert into servicestype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stId != null">
+        st_id,
+      </if>
+      <if test="stName != null">
+        st_name,
+      </if>
+      <if test="stDesc != null">
+        st_desc,
+      </if>
+      <if test="stPrice != null">
+        st_price,
+      </if>
+      <if test="stCreated != null">
+        st_created,
+      </if>
+      <if test="stUpdated != null">
+        st_updated,
+      </if>
+      <if test="stIntfield1 != null">
+        st_intField1,
+      </if>
+      <if test="stIntfield2 != null">
+        st_intField2,
+      </if>
+      <if test="stStringfield1 != null">
+        st_stringField1,
+      </if>
+      <if test="stStringfield2 != null">
+        st_stringField2,
+      </if>
+      <if test="stDatetimefield1 != null">
+        st_datetimeField1,
+      </if>
+      <if test="stDatetimefield2 != null">
+        st_datetimeField2,
+      </if>
+      <if test="stDatefield1 != null">
+        st_dateField1,
+      </if>
+      <if test="stDatefield2 != null">
+        st_dateField2,
+      </if>
+      <if test="stBooleanfield1 != null">
+        st_booleanField1,
+      </if>
+      <if test="stBooleanfield2 != null">
+        st_booleanField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stId != null">
+        #{stId,jdbcType=INTEGER},
+      </if>
+      <if test="stName != null">
+        #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stDesc != null">
+        #{stDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stPrice != null">
+        #{stPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="stCreated != null">
+        #{stCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stUpdated != null">
+        #{stUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stIntfield1 != null">
+        #{stIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="stIntfield2 != null">
+        #{stIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="stStringfield1 != null">
+        #{stStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="stStringfield2 != null">
+        #{stStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="stDatetimefield1 != null">
+        #{stDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stDatetimefield2 != null">
+        #{stDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stDatefield1 != null">
+        #{stDatefield1,jdbcType=DATE},
+      </if>
+      <if test="stDatefield2 != null">
+        #{stDatefield2,jdbcType=DATE},
+      </if>
+      <if test="stBooleanfield1 != null">
+        #{stBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="stBooleanfield2 != null">
+        #{stBooleanfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.ServicesTypeExample" resultType="java.lang.Long">
+    select count(*) from servicestype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update servicestype
+    <set>
+      <if test="record.stId != null">
+        st_id = #{record.stId,jdbcType=INTEGER},
+      </if>
+      <if test="record.stName != null">
+        st_name = #{record.stName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stDesc != null">
+        st_desc = #{record.stDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stPrice != null">
+        st_price = #{record.stPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.stCreated != null">
+        st_created = #{record.stCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stUpdated != null">
+        st_updated = #{record.stUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stIntfield1 != null">
+        st_intField1 = #{record.stIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.stIntfield2 != null">
+        st_intField2 = #{record.stIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.stStringfield1 != null">
+        st_stringField1 = #{record.stStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stStringfield2 != null">
+        st_stringField2 = #{record.stStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stDatetimefield1 != null">
+        st_datetimeField1 = #{record.stDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stDatetimefield2 != null">
+        st_datetimeField2 = #{record.stDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stDatefield1 != null">
+        st_dateField1 = #{record.stDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.stDatefield2 != null">
+        st_dateField2 = #{record.stDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.stBooleanfield1 != null">
+        st_booleanField1 = #{record.stBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="record.stBooleanfield2 != null">
+        st_booleanField2 = #{record.stBooleanfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update servicestype
+    set st_id = #{record.stId,jdbcType=INTEGER},
+      st_name = #{record.stName,jdbcType=VARCHAR},
+      st_desc = #{record.stDesc,jdbcType=VARCHAR},
+      st_price = #{record.stPrice,jdbcType=DOUBLE},
+      st_created = #{record.stCreated,jdbcType=TIMESTAMP},
+      st_updated = #{record.stUpdated,jdbcType=TIMESTAMP},
+      st_intField1 = #{record.stIntfield1,jdbcType=INTEGER},
+      st_intField2 = #{record.stIntfield2,jdbcType=INTEGER},
+      st_stringField1 = #{record.stStringfield1,jdbcType=VARCHAR},
+      st_stringField2 = #{record.stStringfield2,jdbcType=VARCHAR},
+      st_datetimeField1 = #{record.stDatetimefield1,jdbcType=TIMESTAMP},
+      st_datetimeField2 = #{record.stDatetimefield2,jdbcType=TIMESTAMP},
+      st_dateField1 = #{record.stDatefield1,jdbcType=DATE},
+      st_dateField2 = #{record.stDatefield2,jdbcType=DATE},
+      st_booleanField1 = #{record.stBooleanfield1,jdbcType=BIT},
+      st_booleanField2 = #{record.stBooleanfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.ServicesType">
+    update servicestype
+    <set>
+      <if test="stName != null">
+        st_name = #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stDesc != null">
+        st_desc = #{stDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stPrice != null">
+        st_price = #{stPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="stCreated != null">
+        st_created = #{stCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stUpdated != null">
+        st_updated = #{stUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stIntfield1 != null">
+        st_intField1 = #{stIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="stIntfield2 != null">
+        st_intField2 = #{stIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="stStringfield1 != null">
+        st_stringField1 = #{stStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="stStringfield2 != null">
+        st_stringField2 = #{stStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="stDatetimefield1 != null">
+        st_datetimeField1 = #{stDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stDatetimefield2 != null">
+        st_datetimeField2 = #{stDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stDatefield1 != null">
+        st_dateField1 = #{stDatefield1,jdbcType=DATE},
+      </if>
+      <if test="stDatefield2 != null">
+        st_dateField2 = #{stDatefield2,jdbcType=DATE},
+      </if>
+      <if test="stBooleanfield1 != null">
+        st_booleanField1 = #{stBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="stBooleanfield2 != null">
+        st_booleanField2 = #{stBooleanfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where st_id = #{stId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.ServicesType">
+    update servicestype
+    set st_name = #{stName,jdbcType=VARCHAR},
+      st_desc = #{stDesc,jdbcType=VARCHAR},
+      st_price = #{stPrice,jdbcType=DOUBLE},
+      st_created = #{stCreated,jdbcType=TIMESTAMP},
+      st_updated = #{stUpdated,jdbcType=TIMESTAMP},
+      st_intField1 = #{stIntfield1,jdbcType=INTEGER},
+      st_intField2 = #{stIntfield2,jdbcType=INTEGER},
+      st_stringField1 = #{stStringfield1,jdbcType=VARCHAR},
+      st_stringField2 = #{stStringfield2,jdbcType=VARCHAR},
+      st_datetimeField1 = #{stDatetimefield1,jdbcType=TIMESTAMP},
+      st_datetimeField2 = #{stDatetimefield2,jdbcType=TIMESTAMP},
+      st_dateField1 = #{stDatefield1,jdbcType=DATE},
+      st_dateField2 = #{stDatefield2,jdbcType=DATE},
+      st_booleanField1 = #{stBooleanfield1,jdbcType=BIT},
+      st_booleanField2 = #{stBooleanfield2,jdbcType=BIT}
+    where st_id = #{stId,jdbcType=INTEGER}
+  </update>
+</mapper>

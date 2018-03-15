@@ -272,62 +272,52 @@ public class RoomExample {
             return (Criteria) this;
         }
 
-        public Criteria andRTypeEqualTo(String value) {
+        public Criteria andRTypeEqualTo(Integer value) {
             addCriterion("r_type =", value, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeNotEqualTo(String value) {
+        public Criteria andRTypeNotEqualTo(Integer value) {
             addCriterion("r_type <>", value, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeGreaterThan(String value) {
+        public Criteria andRTypeGreaterThan(Integer value) {
             addCriterion("r_type >", value, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeGreaterThanOrEqualTo(String value) {
+        public Criteria andRTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("r_type >=", value, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeLessThan(String value) {
+        public Criteria andRTypeLessThan(Integer value) {
             addCriterion("r_type <", value, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeLessThanOrEqualTo(String value) {
+        public Criteria andRTypeLessThanOrEqualTo(Integer value) {
             addCriterion("r_type <=", value, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeLike(String value) {
-            addCriterion("r_type like", value, "rType");
-            return (Criteria) this;
-        }
-
-        public Criteria andRTypeNotLike(String value) {
-            addCriterion("r_type not like", value, "rType");
-            return (Criteria) this;
-        }
-
-        public Criteria andRTypeIn(List<String> values) {
+        public Criteria andRTypeIn(List<Integer> values) {
             addCriterion("r_type in", values, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeNotIn(List<String> values) {
+        public Criteria andRTypeNotIn(List<Integer> values) {
             addCriterion("r_type not in", values, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeBetween(String value1, String value2) {
+        public Criteria andRTypeBetween(Integer value1, Integer value2) {
             addCriterion("r_type between", value1, value2, "rType");
             return (Criteria) this;
         }
 
-        public Criteria andRTypeNotBetween(String value1, String value2) {
+        public Criteria andRTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("r_type not between", value1, value2, "rType");
             return (Criteria) this;
         }

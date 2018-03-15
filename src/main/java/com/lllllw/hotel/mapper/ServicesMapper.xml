@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lllllw.hotel.dao.ServicesMapper">
+  <resultMap id="BaseResultMap" type="com.lllllw.hotel.model.Services">
+    <id column="se_id" jdbcType="INTEGER" property="seId" />
+    <result column="se_oid" jdbcType="INTEGER" property="seOid" />
+    <result column="se_tid" jdbcType="INTEGER" property="seTid" />
+    <result column="se_created" jdbcType="TIMESTAMP" property="seCreated" />
+    <result column="se_updated" jdbcType="TIMESTAMP" property="seUpdated" />
+    <result column="se_order" jdbcType="CHAR" property="seOrder" />
+    <result column="se_otime" jdbcType="TIMESTAMP" property="seOtime" />
+    <result column="se_status" jdbcType="BIT" property="seStatus" />
+    <result column="se_remarks" jdbcType="VARCHAR" property="seRemarks" />
+    <result column="se_intField1" jdbcType="INTEGER" property="seIntfield1" />
+    <result column="se_intField2" jdbcType="INTEGER" property="seIntfield2" />
+    <result column="se_stringField1" jdbcType="VARCHAR" property="seStringfield1" />
+    <result column="se_stringField2" jdbcType="VARCHAR" property="seStringfield2" />
+    <result column="se_dateField1" jdbcType="DATE" property="seDatefield1" />
+    <result column="se_dateField2" jdbcType="DATE" property="seDatefield2" />
+    <result column="se_datetimeField1" jdbcType="TIMESTAMP" property="seDatetimefield1" />
+    <result column="se_datetimeField2" jdbcType="TIMESTAMP" property="seDatetimefield2" />
+    <result column="se_booleanField1" jdbcType="BIT" property="seBooleanfield1" />
+    <result column="se_booleanField2" jdbcType="BIT" property="seBooleanfield2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    se_id, se_oid, se_tid, se_created, se_updated, se_order, se_otime, se_status, se_remarks, 
+    se_intField1, se_intField2, se_stringField1, se_stringField2, se_dateField1, se_dateField2, 
+    se_datetimeField1, se_datetimeField2, se_booleanField1, se_booleanField2
+  </sql>
+  <select id="selectByExample" parameterType="com.lllllw.hotel.model.ServicesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from services
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from services
+    where se_id = #{seId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from services
+    where se_id = #{seId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.ServicesExample">
+    delete from services
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lllllw.hotel.model.Services">
+    insert into services (se_id, se_oid, se_tid, 
+      se_created, se_updated, se_order, 
+      se_otime, se_status, se_remarks, 
+      se_intField1, se_intField2, se_stringField1, 
+      se_stringField2, se_dateField1, se_dateField2, 
+      se_datetimeField1, se_datetimeField2, 
+      se_booleanField1, se_booleanField2)
+    values (#{seId,jdbcType=INTEGER}, #{seOid,jdbcType=INTEGER}, #{seTid,jdbcType=INTEGER}, 
+      #{seCreated,jdbcType=TIMESTAMP}, #{seUpdated,jdbcType=TIMESTAMP}, #{seOrder,jdbcType=CHAR}, 
+      #{seOtime,jdbcType=TIMESTAMP}, #{seStatus,jdbcType=BIT}, #{seRemarks,jdbcType=VARCHAR}, 
+      #{seIntfield1,jdbcType=INTEGER}, #{seIntfield2,jdbcType=INTEGER}, #{seStringfield1,jdbcType=VARCHAR}, 
+      #{seStringfield2,jdbcType=VARCHAR}, #{seDatefield1,jdbcType=DATE}, #{seDatefield2,jdbcType=DATE}, 
+      #{seDatetimefield1,jdbcType=TIMESTAMP}, #{seDatetimefield2,jdbcType=TIMESTAMP}, 
+      #{seBooleanfield1,jdbcType=BIT}, #{seBooleanfield2,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Services">
+    insert into services
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seId != null">
+        se_id,
+      </if>
+      <if test="seOid != null">
+        se_oid,
+      </if>
+      <if test="seTid != null">
+        se_tid,
+      </if>
+      <if test="seCreated != null">
+        se_created,
+      </if>
+      <if test="seUpdated != null">
+        se_updated,
+      </if>
+      <if test="seOrder != null">
+        se_order,
+      </if>
+      <if test="seOtime != null">
+        se_otime,
+      </if>
+      <if test="seStatus != null">
+        se_status,
+      </if>
+      <if test="seRemarks != null">
+        se_remarks,
+      </if>
+      <if test="seIntfield1 != null">
+        se_intField1,
+      </if>
+      <if test="seIntfield2 != null">
+        se_intField2,
+      </if>
+      <if test="seStringfield1 != null">
+        se_stringField1,
+      </if>
+      <if test="seStringfield2 != null">
+        se_stringField2,
+      </if>
+      <if test="seDatefield1 != null">
+        se_dateField1,
+      </if>
+      <if test="seDatefield2 != null">
+        se_dateField2,
+      </if>
+      <if test="seDatetimefield1 != null">
+        se_datetimeField1,
+      </if>
+      <if test="seDatetimefield2 != null">
+        se_datetimeField2,
+      </if>
+      <if test="seBooleanfield1 != null">
+        se_booleanField1,
+      </if>
+      <if test="seBooleanfield2 != null">
+        se_booleanField2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seId != null">
+        #{seId,jdbcType=INTEGER},
+      </if>
+      <if test="seOid != null">
+        #{seOid,jdbcType=INTEGER},
+      </if>
+      <if test="seTid != null">
+        #{seTid,jdbcType=INTEGER},
+      </if>
+      <if test="seCreated != null">
+        #{seCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seUpdated != null">
+        #{seUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seOrder != null">
+        #{seOrder,jdbcType=CHAR},
+      </if>
+      <if test="seOtime != null">
+        #{seOtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seStatus != null">
+        #{seStatus,jdbcType=BIT},
+      </if>
+      <if test="seRemarks != null">
+        #{seRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="seIntfield1 != null">
+        #{seIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="seIntfield2 != null">
+        #{seIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="seStringfield1 != null">
+        #{seStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="seStringfield2 != null">
+        #{seStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="seDatefield1 != null">
+        #{seDatefield1,jdbcType=DATE},
+      </if>
+      <if test="seDatefield2 != null">
+        #{seDatefield2,jdbcType=DATE},
+      </if>
+      <if test="seDatetimefield1 != null">
+        #{seDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seDatetimefield2 != null">
+        #{seDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seBooleanfield1 != null">
+        #{seBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="seBooleanfield2 != null">
+        #{seBooleanfield2,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lllllw.hotel.model.ServicesExample" resultType="java.lang.Long">
+    select count(*) from services
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update services
+    <set>
+      <if test="record.seId != null">
+        se_id = #{record.seId,jdbcType=INTEGER},
+      </if>
+      <if test="record.seOid != null">
+        se_oid = #{record.seOid,jdbcType=INTEGER},
+      </if>
+      <if test="record.seTid != null">
+        se_tid = #{record.seTid,jdbcType=INTEGER},
+      </if>
+      <if test="record.seCreated != null">
+        se_created = #{record.seCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.seUpdated != null">
+        se_updated = #{record.seUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.seOrder != null">
+        se_order = #{record.seOrder,jdbcType=CHAR},
+      </if>
+      <if test="record.seOtime != null">
+        se_otime = #{record.seOtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.seStatus != null">
+        se_status = #{record.seStatus,jdbcType=BIT},
+      </if>
+      <if test="record.seRemarks != null">
+        se_remarks = #{record.seRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seIntfield1 != null">
+        se_intField1 = #{record.seIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="record.seIntfield2 != null">
+        se_intField2 = #{record.seIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="record.seStringfield1 != null">
+        se_stringField1 = #{record.seStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seStringfield2 != null">
+        se_stringField2 = #{record.seStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seDatefield1 != null">
+        se_dateField1 = #{record.seDatefield1,jdbcType=DATE},
+      </if>
+      <if test="record.seDatefield2 != null">
+        se_dateField2 = #{record.seDatefield2,jdbcType=DATE},
+      </if>
+      <if test="record.seDatetimefield1 != null">
+        se_datetimeField1 = #{record.seDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.seDatetimefield2 != null">
+        se_datetimeField2 = #{record.seDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.seBooleanfield1 != null">
+        se_booleanField1 = #{record.seBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="record.seBooleanfield2 != null">
+        se_booleanField2 = #{record.seBooleanfield2,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update services
+    set se_id = #{record.seId,jdbcType=INTEGER},
+      se_oid = #{record.seOid,jdbcType=INTEGER},
+      se_tid = #{record.seTid,jdbcType=INTEGER},
+      se_created = #{record.seCreated,jdbcType=TIMESTAMP},
+      se_updated = #{record.seUpdated,jdbcType=TIMESTAMP},
+      se_order = #{record.seOrder,jdbcType=CHAR},
+      se_otime = #{record.seOtime,jdbcType=TIMESTAMP},
+      se_status = #{record.seStatus,jdbcType=BIT},
+      se_remarks = #{record.seRemarks,jdbcType=VARCHAR},
+      se_intField1 = #{record.seIntfield1,jdbcType=INTEGER},
+      se_intField2 = #{record.seIntfield2,jdbcType=INTEGER},
+      se_stringField1 = #{record.seStringfield1,jdbcType=VARCHAR},
+      se_stringField2 = #{record.seStringfield2,jdbcType=VARCHAR},
+      se_dateField1 = #{record.seDatefield1,jdbcType=DATE},
+      se_dateField2 = #{record.seDatefield2,jdbcType=DATE},
+      se_datetimeField1 = #{record.seDatetimefield1,jdbcType=TIMESTAMP},
+      se_datetimeField2 = #{record.seDatetimefield2,jdbcType=TIMESTAMP},
+      se_booleanField1 = #{record.seBooleanfield1,jdbcType=BIT},
+      se_booleanField2 = #{record.seBooleanfield2,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Services">
+    update services
+    <set>
+      <if test="seOid != null">
+        se_oid = #{seOid,jdbcType=INTEGER},
+      </if>
+      <if test="seTid != null">
+        se_tid = #{seTid,jdbcType=INTEGER},
+      </if>
+      <if test="seCreated != null">
+        se_created = #{seCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seUpdated != null">
+        se_updated = #{seUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seOrder != null">
+        se_order = #{seOrder,jdbcType=CHAR},
+      </if>
+      <if test="seOtime != null">
+        se_otime = #{seOtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seStatus != null">
+        se_status = #{seStatus,jdbcType=BIT},
+      </if>
+      <if test="seRemarks != null">
+        se_remarks = #{seRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="seIntfield1 != null">
+        se_intField1 = #{seIntfield1,jdbcType=INTEGER},
+      </if>
+      <if test="seIntfield2 != null">
+        se_intField2 = #{seIntfield2,jdbcType=INTEGER},
+      </if>
+      <if test="seStringfield1 != null">
+        se_stringField1 = #{seStringfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="seStringfield2 != null">
+        se_stringField2 = #{seStringfield2,jdbcType=VARCHAR},
+      </if>
+      <if test="seDatefield1 != null">
+        se_dateField1 = #{seDatefield1,jdbcType=DATE},
+      </if>
+      <if test="seDatefield2 != null">
+        se_dateField2 = #{seDatefield2,jdbcType=DATE},
+      </if>
+      <if test="seDatetimefield1 != null">
+        se_datetimeField1 = #{seDatetimefield1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seDatetimefield2 != null">
+        se_datetimeField2 = #{seDatetimefield2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seBooleanfield1 != null">
+        se_booleanField1 = #{seBooleanfield1,jdbcType=BIT},
+      </if>
+      <if test="seBooleanfield2 != null">
+        se_booleanField2 = #{seBooleanfield2,jdbcType=BIT},
+      </if>
+    </set>
+    where se_id = #{seId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Services">
+    update services
+    set se_oid = #{seOid,jdbcType=INTEGER},
+      se_tid = #{seTid,jdbcType=INTEGER},
+      se_created = #{seCreated,jdbcType=TIMESTAMP},
+      se_updated = #{seUpdated,jdbcType=TIMESTAMP},
+      se_order = #{seOrder,jdbcType=CHAR},
+      se_otime = #{seOtime,jdbcType=TIMESTAMP},
+      se_status = #{seStatus,jdbcType=BIT},
+      se_remarks = #{seRemarks,jdbcType=VARCHAR},
+      se_intField1 = #{seIntfield1,jdbcType=INTEGER},
+      se_intField2 = #{seIntfield2,jdbcType=INTEGER},
+      se_stringField1 = #{seStringfield1,jdbcType=VARCHAR},
+      se_stringField2 = #{seStringfield2,jdbcType=VARCHAR},
+      se_dateField1 = #{seDatefield1,jdbcType=DATE},
+      se_dateField2 = #{seDatefield2,jdbcType=DATE},
+      se_datetimeField1 = #{seDatetimefield1,jdbcType=TIMESTAMP},
+      se_datetimeField2 = #{seDatetimefield2,jdbcType=TIMESTAMP},
+      se_booleanField1 = #{seBooleanfield1,jdbcType=BIT},
+      se_booleanField2 = #{seBooleanfield2,jdbcType=BIT}
+    where se_id = #{seId,jdbcType=INTEGER}
+  </update>
+</mapper>

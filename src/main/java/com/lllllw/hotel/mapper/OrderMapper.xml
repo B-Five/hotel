@@ -5,8 +5,8 @@
     <id column="o_id" jdbcType="INTEGER" property="oId" />
     <result column="o_uid" jdbcType="INTEGER" property="oUid" />
     <result column="o_rid" jdbcType="INTEGER" property="oRid" />
-    <result column="o_checkinTime" jdbcType="TIMESTAMP" property="oCheckintime" />
-    <result column="o_checkoutTime" jdbcType="TIMESTAMP" property="oCheckouttime" />
+    <result column="o_checkinTime" jdbcType="DATE" property="oCheckintime" />
+    <result column="o_checkoutTime" jdbcType="DATE" property="oCheckouttime" />
     <result column="o_deposit" jdbcType="DOUBLE" property="oDeposit" />
     <result column="o_price" jdbcType="DOUBLE" property="oPrice" />
     <result column="o_status" jdbcType="BIT" property="oStatus" />
@@ -126,7 +126,7 @@
       o_dateField2, o_datetimeField1, o_datetimeField2, 
       o_boolField1, o_boolField2)
     values (#{oId,jdbcType=INTEGER}, #{oUid,jdbcType=INTEGER}, #{oRid,jdbcType=INTEGER}, 
-      #{oCheckintime,jdbcType=TIMESTAMP}, #{oCheckouttime,jdbcType=TIMESTAMP}, #{oDeposit,jdbcType=DOUBLE}, 
+      #{oCheckintime,jdbcType=DATE}, #{oCheckouttime,jdbcType=DATE}, #{oDeposit,jdbcType=DOUBLE}, 
       #{oPrice,jdbcType=DOUBLE}, #{oStatus,jdbcType=BIT}, #{oCreated,jdbcType=TIMESTAMP}, 
       #{oUpdated,jdbcType=TIMESTAMP}, #{oIntfield1,jdbcType=VARCHAR}, #{oIntfield2,jdbcType=VARCHAR}, 
       #{oStringfield1,jdbcType=VARCHAR}, #{oStringfield2,jdbcType=VARCHAR}, #{oDatefield1,jdbcType=DATE}, 
@@ -208,10 +208,10 @@
         #{oRid,jdbcType=INTEGER},
       </if>
       <if test="oCheckintime != null">
-        #{oCheckintime,jdbcType=TIMESTAMP},
+        #{oCheckintime,jdbcType=DATE},
       </if>
       <if test="oCheckouttime != null">
-        #{oCheckouttime,jdbcType=TIMESTAMP},
+        #{oCheckouttime,jdbcType=DATE},
       </if>
       <if test="oDeposit != null">
         #{oDeposit,jdbcType=DOUBLE},
@@ -279,10 +279,10 @@
         o_rid = #{record.oRid,jdbcType=INTEGER},
       </if>
       <if test="record.oCheckintime != null">
-        o_checkinTime = #{record.oCheckintime,jdbcType=TIMESTAMP},
+        o_checkinTime = #{record.oCheckintime,jdbcType=DATE},
       </if>
       <if test="record.oCheckouttime != null">
-        o_checkoutTime = #{record.oCheckouttime,jdbcType=TIMESTAMP},
+        o_checkoutTime = #{record.oCheckouttime,jdbcType=DATE},
       </if>
       <if test="record.oDeposit != null">
         o_deposit = #{record.oDeposit,jdbcType=DOUBLE},
@@ -339,8 +339,8 @@
     set o_id = #{record.oId,jdbcType=INTEGER},
       o_uid = #{record.oUid,jdbcType=INTEGER},
       o_rid = #{record.oRid,jdbcType=INTEGER},
-      o_checkinTime = #{record.oCheckintime,jdbcType=TIMESTAMP},
-      o_checkoutTime = #{record.oCheckouttime,jdbcType=TIMESTAMP},
+      o_checkinTime = #{record.oCheckintime,jdbcType=DATE},
+      o_checkoutTime = #{record.oCheckouttime,jdbcType=DATE},
       o_deposit = #{record.oDeposit,jdbcType=DOUBLE},
       o_price = #{record.oPrice,jdbcType=DOUBLE},
       o_status = #{record.oStatus,jdbcType=BIT},
@@ -370,10 +370,10 @@
         o_rid = #{oRid,jdbcType=INTEGER},
       </if>
       <if test="oCheckintime != null">
-        o_checkinTime = #{oCheckintime,jdbcType=TIMESTAMP},
+        o_checkinTime = #{oCheckintime,jdbcType=DATE},
       </if>
       <if test="oCheckouttime != null">
-        o_checkoutTime = #{oCheckouttime,jdbcType=TIMESTAMP},
+        o_checkoutTime = #{oCheckouttime,jdbcType=DATE},
       </if>
       <if test="oDeposit != null">
         o_deposit = #{oDeposit,jdbcType=DOUBLE},
@@ -427,8 +427,8 @@
     update order
     set o_uid = #{oUid,jdbcType=INTEGER},
       o_rid = #{oRid,jdbcType=INTEGER},
-      o_checkinTime = #{oCheckintime,jdbcType=TIMESTAMP},
-      o_checkoutTime = #{oCheckouttime,jdbcType=TIMESTAMP},
+      o_checkinTime = #{oCheckintime,jdbcType=DATE},
+      o_checkoutTime = #{oCheckouttime,jdbcType=DATE},
       o_deposit = #{oDeposit,jdbcType=DOUBLE},
       o_price = #{oPrice,jdbcType=DOUBLE},
       o_status = #{oStatus,jdbcType=BIT},

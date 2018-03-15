@@ -65,6 +65,21 @@ $(function(){
         });
     });
     
+    $("#searchbtn").click(function () {
+        $.ajax({
+            type:"post",
+            url:"/hotel/search",
+            dataType:"text",    //data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
+      data:{time:$("#date-range0").val(),member:$("#member").val()},
+      success:function (data) {
+          if(data=="success"){
+           window.location.href='/hotel/searchPage';
+             }else
+               alert("输入错误");
+          },
+        });
+    });
+    
 /*    $("#rEmail").blur(function(){
     	$.ajax({
             type:"post",
@@ -80,6 +95,17 @@ $(function(){
         });
     	return false;
     	}) */
+    $('#date-range0').dateRangePicker(
+    		{
+    		}).bind('datepicker-first-date-selected', function(event, obj)
+    		{
+    			/* This event will be triggered when first date is selected */
+    			console.log('first-date-selected',obj);
+    			// obj will be something like this:
+    			// {
+    			// 		date1: (Date object of the earlier date)
+    			// }
+    		})
     	
 });
 

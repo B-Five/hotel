@@ -7,7 +7,7 @@ public class Room {
 
     private String rNumber;
 
-    private String rType;
+    private Integer rType;
 
     private Integer rMember;
 
@@ -55,12 +55,12 @@ public class Room {
         this.rNumber = rNumber == null ? null : rNumber.trim();
     }
 
-    public String getrType() {
+    public Integer getrType() {
         return rType;
     }
 
-    public void setrType(String rType) {
-        this.rType = rType == null ? null : rType.trim();
+    public void setrType(Integer rType) {
+        this.rType = rType;
     }
 
     public Integer getrMember() {

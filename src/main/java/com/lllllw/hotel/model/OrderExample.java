@@ -323,52 +323,52 @@ public class OrderExample {
         }
 
         public Criteria andOCheckintimeEqualTo(Date value) {
-            addCriterion("o_checkinTime =", value, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime =", value, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeNotEqualTo(Date value) {
-            addCriterion("o_checkinTime <>", value, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime <>", value, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeGreaterThan(Date value) {
-            addCriterion("o_checkinTime >", value, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime >", value, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("o_checkinTime >=", value, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime >=", value, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeLessThan(Date value) {
-            addCriterion("o_checkinTime <", value, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime <", value, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeLessThanOrEqualTo(Date value) {
-            addCriterion("o_checkinTime <=", value, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime <=", value, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeIn(List<Date> values) {
-            addCriterion("o_checkinTime in", values, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime in", values, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeNotIn(List<Date> values) {
-            addCriterion("o_checkinTime not in", values, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime not in", values, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeBetween(Date value1, Date value2) {
-            addCriterion("o_checkinTime between", value1, value2, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime between", value1, value2, "oCheckintime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckintimeNotBetween(Date value1, Date value2) {
-            addCriterion("o_checkinTime not between", value1, value2, "oCheckintime");
+            addCriterionForJDBCDate("o_checkinTime not between", value1, value2, "oCheckintime");
             return (Criteria) this;
         }
 
@@ -383,52 +383,52 @@ public class OrderExample {
         }
 
         public Criteria andOCheckouttimeEqualTo(Date value) {
-            addCriterion("o_checkoutTime =", value, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime =", value, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeNotEqualTo(Date value) {
-            addCriterion("o_checkoutTime <>", value, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime <>", value, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeGreaterThan(Date value) {
-            addCriterion("o_checkoutTime >", value, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime >", value, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("o_checkoutTime >=", value, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime >=", value, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeLessThan(Date value) {
-            addCriterion("o_checkoutTime <", value, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime <", value, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeLessThanOrEqualTo(Date value) {
-            addCriterion("o_checkoutTime <=", value, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime <=", value, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeIn(List<Date> values) {
-            addCriterion("o_checkoutTime in", values, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime in", values, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeNotIn(List<Date> values) {
-            addCriterion("o_checkoutTime not in", values, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime not in", values, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeBetween(Date value1, Date value2) {
-            addCriterion("o_checkoutTime between", value1, value2, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime between", value1, value2, "oCheckouttime");
             return (Criteria) this;
         }
 
         public Criteria andOCheckouttimeNotBetween(Date value1, Date value2) {
-            addCriterion("o_checkoutTime not between", value1, value2, "oCheckouttime");
+            addCriterionForJDBCDate("o_checkoutTime not between", value1, value2, "oCheckouttime");
             return (Criteria) this;
         }
 
