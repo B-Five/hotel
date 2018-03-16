@@ -3,6 +3,7 @@ package com.lllllw.hotel.dao;
 import com.lllllw.hotel.model.RoomType;
 import com.lllllw.hotel.model.RoomTypeExample;
 
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,5 +30,5 @@ public interface RoomTypeMapper {
 
     int updateByPrimaryKey(RoomType record);
     
-    List<RoomType> selectByDate(@Param("start")String start,@Param("end")String end,@Param("member")int member);
+    List<RoomType> selectByDate(@Param("start")Date start,@Param("end")Date end,@Param("member")int member);
 }

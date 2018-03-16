@@ -9,6 +9,7 @@
 <title>房间预订</title>
 <link rel="stylesheet" href="resource/css/bootstrap.css">
 <link rel="stylesheet" href="resource/css/index.css">
+<link rel="stylesheet" href="resource/css/daterangepicker.min.css">
 </head>
 <body>
 	<div class="nav">
@@ -65,11 +66,13 @@
 		</div>
 		<ul>
 			<h2>客房</h2>
-			<c:forEach items="${roomTypeList}" var="roomType" ></c:forEach>
+			<c:forEach items="${roomTypeList}" var="roomType" >
 			<li>房间类型:${roomType.tName}</li>
 			<li>房间床型:${roomType.tBed}</li>
 			<li>房间位置:${roomType.tPo}</li>
             <li>浴室类型:${roomType.tPo}</li>
+            <button type="button" c lass="btn btn-primary">预定房间</button>
+            </c:forEach>
 		</ul>
 	</div>
 	<div></div>
@@ -106,4 +109,9 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="resource/js/moment.min.js"></script>
+<script type="text/javascript" src="resource/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="resource/js/jquery.daterangepicker.min.js"></script>
+<script type="text/javascript" src="resource/js/common.js"></script>
 </html>

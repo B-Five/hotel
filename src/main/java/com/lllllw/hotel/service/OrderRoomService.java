@@ -1,5 +1,8 @@
 package com.lllllw.hotel.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +18,19 @@ public class OrderRoomService {
 
 	public List<RoomType> selectRoomType(String time, int member) {
 		String[] timeArray = time.split("to");
-		if ("入住日期".equals(timeArray[0].trim())){
-			timeArray[0] = "null";
-			timeArray[1] = "null";
+		Date start = null;
+		Date end = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		if (!"入住日期".equals(timeArray[0].trim())) {
+			try {
+				start = sdf.parse(timeArray[0].trim());
+				end = sdf.parse(timeArray[0].trim());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
-			return roomTypeMapper.selectByDate(timeArray[0].trim(), timeArray[1].trim(), member);
+		return roomTypeMapper.selectByDate(start, end, member);
 	}
 }

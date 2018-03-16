@@ -255,7 +255,7 @@
 		SELECT 
 		<include refid="Base_Column_List" />
 		FROM roomType WHERE t_id IN (
-		SELECT r_type FROM room WHERE r_id NOT IN ( select o_rid FROM order WHERE o_checkinTime &lt;= ${start} AND o_checkoutTime &gt;= ${start} UNION
-		SELECT o_rid FROM order WHERE o_checkinTime &lt;= ${end} AND o_checkoutTime &gt;=${end} )GROUP BY r_type) AND t_member >= #{member}
+		SELECT r_type FROM room WHERE r_id NOT IN ( select o_rid FROM `order` WHERE o_checkinTime &lt;= #{start,jdbcType=DATE} AND o_checkoutTime &gt;= #{start,jdbcType=DATE} UNION
+		SELECT o_rid FROM `order` WHERE o_checkinTime &lt;= #{end,jdbcType=DATE} AND o_checkoutTime &gt;=#{end,jdbcType=DATE} )GROUP BY r_type) AND t_member >= #{member,jdbcType=INTEGER}
 	</select>
 </mapper>
