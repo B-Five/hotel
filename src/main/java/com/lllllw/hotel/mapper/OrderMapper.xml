@@ -93,7 +93,7 @@
     </if>
     'false' as QUERYID,
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -104,21 +104,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     where o_id = #{oId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order
+    delete from `order`
     where o_id = #{oId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.lllllw.hotel.model.OrderExample">
-    delete from order
+    delete from `order`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.lllllw.hotel.model.Order">
-    insert into order (o_id, o_uid, o_rid, 
+    insert into `order` (o_id, o_uid, o_rid, 
       o_checkinTime, o_checkoutTime, o_deposit, 
       o_price, o_status, o_created, 
       o_updated, o_intField1, o_intField2, 
@@ -134,7 +134,7 @@
       #{oBoolfield1,jdbcType=BIT}, #{oBoolfield2,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.lllllw.hotel.model.Order">
-    insert into order
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
         o_id,
@@ -261,13 +261,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.lllllw.hotel.model.OrderExample" resultType="java.lang.Long">
-    select count(*) from order
+    select count(*) from `order`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update order
+    update `order`
     <set>
       <if test="record.oId != null">
         o_id = #{record.oId,jdbcType=INTEGER},
@@ -335,7 +335,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update order
+    update `order`
     set o_id = #{record.oId,jdbcType=INTEGER},
       o_uid = #{record.oUid,jdbcType=INTEGER},
       o_rid = #{record.oRid,jdbcType=INTEGER},
@@ -361,7 +361,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.lllllw.hotel.model.Order">
-    update order
+    update `order`
     <set>
       <if test="oUid != null">
         o_uid = #{oUid,jdbcType=INTEGER},
@@ -424,7 +424,7 @@
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lllllw.hotel.model.Order">
-    update order
+    update `order`
     set o_uid = #{oUid,jdbcType=INTEGER},
       o_rid = #{oRid,jdbcType=INTEGER},
       o_checkinTime = #{oCheckintime,jdbcType=DATE},

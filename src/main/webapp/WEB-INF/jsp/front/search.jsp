@@ -67,11 +67,13 @@
 		<ul>
 			<h2>客房</h2>
 			<c:forEach items="${roomTypeList}" var="roomType" >
+			<ul>
 			<li>房间类型:${roomType.tName}</li>
 			<li>房间床型:${roomType.tBed}</li>
 			<li>房间位置:${roomType.tPo}</li>
-            <li>浴室类型:${roomType.tPo}</li>
-            <button type="button" c lass="btn btn-primary">预定房间</button>
+            <li>浴室类型:${roomType.tBath}</li>
+            <button type="button" id="orderbtn" class="btn btn-success btn-sm" onclick="orderRoom('${customer.cId}','${roomType.tId}')" >预定房间</button>
+            </ul>
             </c:forEach>
 		</ul>
 	</div>
@@ -109,6 +111,30 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	function orderRoom(customer, type) {
+		if (customer != "") {
+			console.log("666");
+			$.ajax({
+				type : "post",
+				url : "/hotel/createOrder",
+				dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
+				data : {
+					time : $("#date-range0").val(),
+					type : type
+				},
+				success : function(data) {
+					if (data == "success") {
+						alert("预订成功");
+					} else
+						alert("输入错误");
+				},
+			});
+		} else {
+			alert("请先登录");
+		}
+	}
+</script>
 <script type="text/javascript" src="resource/js/moment.min.js"></script>
 <script type="text/javascript" src="resource/js/jquery.min.js"></script>
 <script type="text/javascript"

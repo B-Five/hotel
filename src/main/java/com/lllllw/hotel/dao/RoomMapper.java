@@ -30,5 +30,5 @@ public interface RoomMapper {
 
     int updateByPrimaryKey(Room record);
     
-    List<Room> selectByDate(Date start,Date end,int type,int member);
+    Room selectByDate(@Param("start")Date start,@Param("end")Date end,@Param("type")int type,@Param("member")int member);
 }

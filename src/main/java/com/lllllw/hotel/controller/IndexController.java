@@ -19,4 +19,9 @@ public class IndexController {
 		return "front/login";
 	}
 	
+	@RequestMapping(value = "/register")
+	public String loginOut() {
+		return "front/register";
+	}
+	
 }

@@ -74,10 +74,6 @@ public class CustomerController {
 		return "front/index";
 	}
 
-	@RequestMapping(value = "/register")
-	public String loginOut() {
-		return "front/register";
-	}
 
 	/*@RequestMapping(value = "/search")
 	public void searchOrderRoom(HttpServletRequest request, HttpServletResponse response, HttpSession session)

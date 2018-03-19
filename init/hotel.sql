@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-03-15 18:09:56
+Date: 2018-03-19 18:09:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `customer` (
   `c_password` varchar(20) DEFAULT NULL,
   `c_phone` varchar(20) DEFAULT NULL,
   `c_email` varchar(128) DEFAULT NULL,
-  `c_gender` enum('女士','先生') DEFAULT '先生',
+  `c_gender` enum('女士','先生') NOT NULL DEFAULT '先生',
   `c_created` datetime DEFAULT NULL,
   `c_updated` datetime DEFAULT NULL,
   `c_intField1` int(11) DEFAULT NULL,
@@ -40,14 +40,15 @@ CREATE TABLE `customer` (
   `c_boolField1` tinyint(1) DEFAULT NULL,
   `c_boolField2` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
 INSERT INTO `customer` VALUES ('1', 'test', 'test', 'test', 'test', 'test', '先生', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `customer` VALUES ('2', '小', '焉', '1', null, '12345@123.com', null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `customer` VALUES ('4', 'test1', 'test1', '1', '12312424', 'test1', null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `customer` VALUES ('2', '小', '焉', '1', null, '12345@123.com', '先生', null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `customer` VALUES ('4', 'test1', 'test1', '1', '12312424', 'test1', '先生', null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `customer` VALUES ('5', '王', '小名', '12345', '', 'test1', '先生', null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for order
@@ -75,12 +76,13 @@ CREATE TABLE `order` (
   `o_boolField1` tinyint(1) DEFAULT NULL,
   `o_boolField2` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`o_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order
 -- ----------------------------
 INSERT INTO `order` VALUES ('1', '1', '1', '2018-03-13', '2018-03-14', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `order` VALUES ('2', '5', '1', '2018-03-22', '2018-03-22', null, '300', null, '2018-03-19 18:02:48', '2018-03-19 18:02:48', null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for room

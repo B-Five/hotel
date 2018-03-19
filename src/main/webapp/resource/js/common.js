@@ -65,7 +65,7 @@ $(function(){
         });
     });
     
-    $("#searchbtn").click(function () {
+   /* $("#searchbtn").click(function () {
         $.ajax({
             type:"post",
             url:"/hotel/search",
@@ -78,23 +78,38 @@ $(function(){
                alert("输入错误");
           },
         });
-    });
+    });*/
     
-/*    $("#rEmail").blur(function(){
-    	$.ajax({
-            type:"post",
-            url:"/hotel/emailCheck",
-            dataType:"text",    //data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
-      data:{email:$(this).val()},
-            success:function (data) {
-            if(data=="success"){
-            	alert("该邮箱可以使用");
-               }else
-                 alert("该邮箱已被注册");
-            },
-        });
-    	return false;
-    	}) */
+
+    // 预定房间按钮事件
+/*    $("#orderbtn").click(function orderRoom(customer, type) {
+		if (customer != "") {
+			$.ajax({
+				type : "post",
+				url : "/hotel/createOrder",
+				dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
+				data : {
+					member : type
+				},
+				success : function(data) {
+					if (data == "success") {
+						alert("预订成功");
+					} else
+						alert("输入错误");
+				},
+			});
+		} else {
+			alert("请先登录");
+		}
+	});*/
+    
+/*
+ * $("#rEmail").blur(function(){ $.ajax({ type:"post", url:"/hotel/emailCheck",
+ * dataType:"text",
+ * //data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
+ * data:{email:$(this).val()}, success:function (data) { if(data=="success"){
+ * alert("该邮箱可以使用"); }else alert("该邮箱已被注册"); }, }); return false; })
+ */
     $('#date-range0').dateRangePicker(
     		{
     		}).bind('datepicker-first-date-selected', function(event, obj)

@@ -434,14 +434,19 @@
 	</update>
 
 	<select id="selectByDate" resultMap="BaseResultMap">
-		select 
+		SELECT
 		<include refid="Base_Column_List" />
 		FROM room WHERE r_id NOT in(
-		select o_rid FROM order WHERE o_checkinTime &lt;= #{0}
-		o_checkoutTime &gt;= #{0} UNION
-		select o_rid FROM order WHERE o_checkinTime &lt; #{1} AND
-		o_checkoutTime &gt;= #{1}
-		) AND r_type = #{2} AND r_member >= #{3}
-
+		SELECT o_rid FROM `order` WHERE
+		o_checkinTime &lt;= #{start,jdbcType=DATE} AND
+		o_checkoutTime &gt;=
+		#{start,jdbcType=DATE} UNION
+		SELECT o_rid FROM `order` WHERE
+		o_checkinTime &lt;= #{end,jdbcType=DATE} AND
+		o_checkoutTime &gt;=
+		#{end,jdbcType=DATE}
+		) AND r_type = #{type,jdbcType=INTEGER} AND
+		r_member &gt;=
+		#{member,jdbcType=INTEGER} LIMIT 1
 	</select>
 </mapper>
