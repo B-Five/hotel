@@ -112,12 +112,11 @@
 }
 
 .header {
-	background-image:
-		url('https://www.fourseasons.com/alt/img-opt/publish/content/dam/fourseasons/images/web/GHF/GHF_574_aspect16x9.jpg/60.jpg');
+	background-image:url(../image/01.jpg);
 	height: 96px;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: bottom;
+	background-position: center;
 }
 
 .main-container {

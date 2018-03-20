@@ -19,7 +19,7 @@ public class CustomerService {
 		Criteria criteria = example.createCriteria();
 		criteria.andCEmailEqualTo(email);
 		criteria.andCPasswordEqualTo(password);
-		if (customerMapper.selectByExample(example).size() > 0) {
+		if (!customerMapper.selectByExample(example).isEmpty()) {
 			Customer customer = customerMapper.selectByExample(example).get(0);
 			customer.setcPassword(null);
 			return customer;
@@ -31,16 +31,10 @@ public class CustomerService {
 		CustomerExample example = new CustomerExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andCEmailEqualTo(email);
-		if (customerMapper.countByExample(example) == 0)
-			return true;
-		else
-			return false;
+			return customerMapper.countByExample(example) == 0;
 	}
 
 	public boolean createCustomer(Customer customer) {
-		if (customerMapper.insert(customer) == 1)
-			return true;
-		else
-			return false;
+			return customerMapper.insert(customer) == 1;
 	}
 }

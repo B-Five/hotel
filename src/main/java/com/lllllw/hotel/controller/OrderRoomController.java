@@ -26,11 +26,13 @@ public class OrderRoomController {
 	public String searchRoomType(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
 		String time = request.getParameter("time");
-		int member = 0;
+		Integer member = null;
+		List<RoomType> roomTypeList;
 		if (request.getParameter("member") != null && !"".equals(request.getParameter("member"))) {
 			member = Integer.parseInt(request.getParameter("member"));
-		}
-		List<RoomType> roomTypeList = orderRoomService.selectRoomType(time, member);
+			roomTypeList = orderRoomService.selectRoomType(time, member);
+		}else
+			roomTypeList = orderRoomService.selectRoomType(time, 0);
 		request.setAttribute("roomTypeList", roomTypeList);
 		request.setAttribute("time", time);
 		request.setAttribute("member", member);

@@ -25,7 +25,7 @@
 			</ul>
 			<ul class="pull-right">
 				<li><a href="#">入住</a></li>
-				<li><a href="#">订单</a></li>
+				<li><a href="/hotel/customerOrder">订单</a></li>
 				<li><a href="#">额外服务</a></li>
 				<li><a href="/hotel/loginOut">退出登录</a></li>
 			</ul>
@@ -96,12 +96,12 @@
 				<form action="searchPage" method="post">
 					<div class="order1">
 						<h4>时间</h4>
-						<input id="date-range0" name="time" size="30" value="入住日期  to 退房日期 ">
+						<input id="date-range0" name="time" size="30" placeholder="入住日期  to 退房日期 ">
 					</div>
 					<div class="order2">
 						<h4>房客</h4>
 						<input id="member" name="member" list="test" type="text"
-							value="">
+							placeholder="房客数量">
 						<datalist id="test">
 						<option value="1">一位房客</option>
 						<option value="2">两位房客</option>

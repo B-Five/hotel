@@ -20,7 +20,7 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value = "/register")
-	public String loginOut() {
+	public String showRegister() {
 		return "front/register";
 	}
 	

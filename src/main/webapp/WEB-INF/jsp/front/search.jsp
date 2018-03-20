@@ -48,12 +48,12 @@
 				<form action="searchPage">
 					<div class="order1">
 						<h4>时间</h4>
-						<input id="date-range0" size="30" value=" ${requestScope.time } ">
+						<input id="date-range0" size="30" name="time" value="${requestScope.time}" placeholder="入住日期  to 退房日期 " >
 					</div>
 					<div class="order2">
 						<h4>房客</h4>
-						<input id="member" list="test" type="text"
-							value="${requestScope.member }">
+						<input id="member" list="test" type="text" name="member"
+							value="${requestScope.member}" placeholder="房客数量">
 						<datalist id="test">
 						<option value="1">一位房客</option>
 						<option value="2">两位房客</option>
@@ -113,23 +113,29 @@
 </body>
 <script type="text/javascript">
 	function orderRoom(customer, type) {
+		var time = $("#date-range0").val();
+		var member = $("#member").val();
+		console.log(time);
 		if (customer != "") {
-			console.log("666");
-			$.ajax({
-				type : "post",
-				url : "/hotel/createOrder",
-				dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
-				data : {
-					time : $("#date-range0").val(),
-					type : type
-				},
-				success : function(data) {
-					if (data == "success") {
-						alert("预订成功");
-					} else
-						alert("输入错误");
-				},
-			});
+			if (time != "" && member != 0) {
+				$.ajax({
+					type : "post",
+					url : "/hotel/createOrder",
+					dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
+					data : {
+						time : time,
+						type : type
+					},
+					success : function(data) {
+						if (data == "success") {
+							alert("预定成功");
+						} else
+							alert("输入错误");
+					},
+				});
+			} else {
+				alert("请选择入住日期和退房日期 或者房客数量");
+			}
 		} else {
 			alert("请先登录");
 		}
