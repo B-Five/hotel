@@ -1,5 +1,5 @@
 $(function(){
-	
+
 	//登录输入框效果
 	$('.form_text_ipt input').focus(function(){
 		$(this).parent().css({
@@ -12,7 +12,7 @@ $(function(){
 		});
 		//$(this).parent().next().hide();
 	});
-	
+
 	//表单验证
 	$('.form_text_ipt input').blur('input propertychange',function(){
 		if($(this).val()==""){
@@ -34,7 +34,7 @@ $(function(){
 			$(this).parent().next().hide();
 		}
 	});
-	
+
     $("#loginbtn").click(function () {
         $.ajax({
             type:"post",
@@ -49,7 +49,7 @@ $(function(){
             },
         });
     });
-    
+
     $("#registerbtn").click(function () {
         $.ajax({
             type:"post",
@@ -64,7 +64,7 @@ $(function(){
             },
         });
     });
-    
+
    /* $("#searchbtn").click(function () {
         $.ajax({
             type:"post",
@@ -79,30 +79,60 @@ $(function(){
           },
         });
     });*/
-    
+
 
     // 预定房间按钮事件
-/*    $("#orderbtn").click(function orderRoom(customer, type) {
-		if (customer != "") {
-			$.ajax({
-				type : "post",
-				url : "/hotel/createOrder",
-				dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
-				data : {
-					member : type
-				},
-				success : function(data) {
-					if (data == "success") {
-						alert("预订成功");
-					} else
-						alert("输入错误");
-				},
-			});
+    $("#orderbtn").click(function () {
+		var time = $("#date-range0").val();
+		var member = $("#member").val();
+		var customer = $("#cid").val();
+		console.log(customer);
+		var type = $("#orderbtn").val();
+		if (customer != null) {
+			if (time != "" && member != 0) {
+				$.ajax({
+					type : "post",
+					url : "/hotel/createOrder",
+					dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
+					data : {
+						time : time,
+						type : type
+					},
+					success : function(data) {
+						if (data == "success") {
+							alert("预定成功");
+						} else
+							alert("预定失败");
+					},
+				});
+			} else {
+				alert("请选择入住日期和退房日期 或者房客数量");
+			}
 		} else {
 			alert("请先登录");
 		}
-	});*/
-    
+	});
+
+    // 取消订单按钮事件
+	    $("#deletebtn").click(function() {
+		var oId = $("#deletebtn").val();
+		$.ajax({
+			type : "post",
+			url : "/hotel/deleteCustomerOrder",
+			dataType : "text",
+			data : {
+				oId : oId
+			},
+			success : function(data) {
+				if (data == "success") {
+					alert("取消成功");
+					window.location.reload(true);
+				} else
+					alert("取消失败");
+			},
+		});
+	});
+
 /*
  * $("#rEmail").blur(function(){ $.ajax({ type:"post", url:"/hotel/emailCheck",
  * dataType:"text",
@@ -112,6 +142,7 @@ $(function(){
  */
     $('#date-range0').dateRangePicker(
     		{
+    			minDays: 1
     		}).bind('datepicker-first-date-selected', function(event, obj)
     		{
     			/* This event will be triggered when first date is selected */
@@ -120,8 +151,9 @@ $(function(){
     			// {
     			// 		date1: (Date object of the earlier date)
     			// }
+
     		})
-    	
+
 });
 
 

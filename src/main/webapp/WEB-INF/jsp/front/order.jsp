@@ -19,8 +19,8 @@
 				<li><a href="#">${sessionScope.customer.cLastname }${sessionScope.customer.cGender }</a></li>
 			</ul>
 			<ul class="pull-right">
-				<li><a href="#">入住</a></li>
-				<li><a href="#">订单</a></li>
+				<li><a href="/hotel/searchPage">预定</a></li>
+				<li><a href="/hotel/showCustomerOrder">订单</a></li>
 				<li><a href="#">额外服务</a></li>
 				<li><a href="/hotel/loginOut">退出登录</a></li>
 			</ul>
@@ -32,13 +32,14 @@
 			<h2>订单</h2>
 			<c:forEach items="${orderList}" var="order">
 				<ul>
+					<li>订单号:${order.oId}</li>
 					<li>房间号:${order.oIntfield1}</li>
 					<li>房间类型:${order.oStringfield1}</li>
 					<li>房间价格:${order.oPrice}</li>
 					<li>入住日期:<fmt:formatDate value="${order.oCheckintime}" /></li>
 					<li>退房日期:<fmt:formatDate value="${order.oCheckouttime}"/></li>
-					<button type="button" id="orderbtn" class="btn btn-success btn-sm">立即入住</button>
-					<button type="button" id="orderbtn" class="btn btn-success btn-sm">取消订单</button>
+					<button type="button" id="checkinbtn" class="btn btn-success btn-sm" value="${order.oId}">立即入住</button>
+					<button type="button" id="deletebtn" class="btn btn-danger btn-sm" value="${order.oId}">取消订单</button>
 				</ul>
 			</c:forEach>
 		</ul>
@@ -74,4 +75,6 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="resource/js/jquery.min.js"></script>
+<script type="text/javascript" src="resource/js/order.js"></script>
 </html>

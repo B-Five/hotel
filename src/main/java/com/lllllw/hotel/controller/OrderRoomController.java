@@ -20,12 +20,15 @@ import com.lllllw.hotel.service.OrderRoomService;
 public class OrderRoomController {
 
 	@Autowired
-	OrderRoomService orderRoomService;
+	private OrderRoomService orderRoomService;
 
 	@RequestMapping(value = "/searchPage")
 	public String searchRoomType(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
 		String time = request.getParameter("time");
+		if(time == null) {
+			time = "";
+		}
 		Integer member = null;
 		List<RoomType> roomTypeList;
 		if (request.getParameter("member") != null && !"".equals(request.getParameter("member"))) {

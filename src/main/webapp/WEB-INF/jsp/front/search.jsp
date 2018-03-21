@@ -20,10 +20,11 @@
 					if (session.getAttribute("customer") != null) {
 				%>
 				<li><a href="#">${sessionScope.customer.cLastname }${sessionScope.customer.cGender }</a></li>
+				<input id ="cid" value="${customer.cId}" hidden >
 			</ul>
 			<ul class="pull-right">
 				<li><a href="#">入住</a></li>
-				<li><a href="#">订单</a></li>
+				<li><a href="/hotel/showCustomerOrder">订单</a></li>
 				<li><a href="#">额外服务</a></li>
 				<li><a href="/hotel/loginOut">退出登录</a></li>
 			</ul>
@@ -72,7 +73,7 @@
 			<li>房间床型:${roomType.tBed}</li>
 			<li>房间位置:${roomType.tPo}</li>
             <li>浴室类型:${roomType.tBath}</li>
-            <button type="button" id="orderbtn" class="btn btn-success btn-sm" onclick="orderRoom('${customer.cId}','${roomType.tId}')" >预定房间</button>
+            <button type="button" id="orderbtn" class="btn btn-success btn-sm" value="${roomType.tId}" >预定房间</button>
             </ul>
             </c:forEach>
 		</ul>
@@ -111,7 +112,7 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function orderRoom(customer, type) {
 		var time = $("#date-range0").val();
 		var member = $("#member").val();
@@ -140,7 +141,7 @@
 			alert("请先登录");
 		}
 	}
-</script>
+</script> -->
 <script type="text/javascript" src="resource/js/moment.min.js"></script>
 <script type="text/javascript" src="resource/js/jquery.min.js"></script>
 <script type="text/javascript"

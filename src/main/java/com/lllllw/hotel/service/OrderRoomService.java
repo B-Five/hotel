@@ -1,8 +1,8 @@
 package com.lllllw.hotel.service;
 
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,25 @@ import com.lllllw.hotel.model.Room;
 import com.lllllw.hotel.model.RoomType;
 import com.lllllw.hotel.model.RoomTypeExample;
 import com.lllllw.hotel.model.RoomTypeExample.Criteria;
+import com.lllllw.hotel.utils.HotelUtil;
 
+/**
+ * 查找房间页面
+ *
+ */
 @Service
 public class OrderRoomService {
 	@Autowired
-	RoomTypeMapper roomTypeMapper;
-	
+	private RoomTypeMapper roomTypeMapper;
+
 	@Autowired
-	RoomMapper roomMapper;
-	
+	private RoomMapper roomMapper;
+
 	@Autowired
-	OrderMapper orderMapper;
+	private OrderMapper orderMapper;
+
+	@Autowired
+	private HotelUtil hotelUtil;
 
 	public List<RoomType> selectRoomType(String time, int member) {
 		String[] timeArray = time.split("to");
@@ -36,20 +44,20 @@ public class OrderRoomService {
 		if (!"".equals(timeArray[0].trim()) && !"入住日期".equals(timeArray[0].trim())) {
 			try {
 				start = sdf.parse(timeArray[0].trim());
-				end = sdf.parse(timeArray[0].trim());
+				end = sdf.parse(timeArray[1].trim());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 			return roomTypeMapper.selectByDate(start, end, member);
-		}else{
+		} else {
 			RoomTypeExample example = new RoomTypeExample();
 			Criteria criteria = example.createCriteria();
 			criteria.andTIdIsNotNull();
 			return roomTypeMapper.selectByExample(example);
 		}
 	}
-	
-	public boolean createOrder(String time,int type,int member,int customer){
+
+	public boolean createOrder(String time, int type, int member, int customer) {
 		String[] timeArray = time.split("to");
 		Date start = null;
 		Date end = null;
@@ -57,7 +65,7 @@ public class OrderRoomService {
 		if (!"入住日期".equals(timeArray[0].trim())) {
 			try {
 				start = sdf.parse(timeArray[0].trim());
-				end = sdf.parse(timeArray[0].trim());
+				end = sdf.parse(timeArray[1].trim());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -70,13 +78,13 @@ public class OrderRoomService {
 		order.setoRid(room.getrId());
 		order.setoCheckintime(start);
 		order.setoCheckouttime(end);
-		order.setoPrice(room.getrPrice());
+		order.setoDeposit(room.getrPrice());
+		order.setoPrice(room.getrPrice() * hotelUtil.getDays(start, end));
 		order.setoCreated(nowTime);
 		order.setoUpdated(nowTime);
 		order.setoIntfield1(room.getrNumber());
 		order.setoStringfield1(room.getrStringfield1());
-		System.out.println(orderMapper.insert(order));
-		return true;
+		return orderMapper.insert(order) == 1;
 	}
-	
+
 }

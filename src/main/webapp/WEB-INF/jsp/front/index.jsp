@@ -24,8 +24,8 @@
 				<li><a href="#">${sessionScope.customer.cLastname }${sessionScope.customer.cGender }</a></li>
 			</ul>
 			<ul class="pull-right">
-				<li><a href="#">入住</a></li>
-				<li><a href="/hotel/customerOrder">订单</a></li>
+				<li><a href="/hotel/searchPage">预定</a></li>
+				<li><a href="/hotel/showCustomerOrder">订单</a></li>
 				<li><a href="#">额外服务</a></li>
 				<li><a href="/hotel/loginOut">退出登录</a></li>
 			</ul>
