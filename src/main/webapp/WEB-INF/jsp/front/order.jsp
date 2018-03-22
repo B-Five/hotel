@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
@@ -30,16 +31,29 @@
 	<div class="main-container">
 		<ul>
 			<h2>订单</h2>
-			<c:forEach items="${orderList}" var="order">
+			<input id="listLength" value="${fn:length(orderList)}" hidden>
+			<c:forEach items="${orderList}" var="order" varStatus="status">
 				<ul>
+					<li>编号:${status.count}</li>
 					<li>订单号:${order.oId}</li>
 					<li>房间号:${order.oIntfield1}</li>
 					<li>房间类型:${order.oStringfield1}</li>
-					<li>房间价格:${order.oPrice}</li>
+					<li>订单总价:${order.oPrice}</li>
 					<li>入住日期:<fmt:formatDate value="${order.oCheckintime}" /></li>
 					<li>退房日期:<fmt:formatDate value="${order.oCheckouttime}"/></li>
-					<button type="button" id="checkinbtn" class="btn btn-success btn-sm" value="${order.oId}">立即入住</button>
-					<button type="button" id="deletebtn" class="btn btn-danger btn-sm" value="${order.oId}">取消订单</button>
+					<c:if test="${order.oStatus}">
+					<a href="#" class="btn btn-primary btn-sm disabled" role="button">订单已关闭</a>
+					</c:if>
+					<c:if test="${!order.oStatus}">
+					<c:if test="${order.oBoolfield1}">
+					<button type="button" id="showcode"  class="btn btn-info btn-sm" onclick="alert('入住码为：${order.oStringfield2}')">查看密钥</button>
+					<button type="button" id="checkoutbtn"  class="btn btn-warning btn-sm" value="${order.oId}">立即退房</button>
+					</c:if>
+					<c:if test="${!order.oBoolfield1}">
+					<button type="button" id="checkinbtn"  class="btn btn-success btn-sm" value="${order.oId}">立即入住</button>
+					<button type="button" id="deletebtn"  class="btn btn-danger btn-sm" value="${order.oId}">取消订单</button>
+					</c:if>
+					</c:if>
 				</ul>
 			</c:forEach>
 		</ul>

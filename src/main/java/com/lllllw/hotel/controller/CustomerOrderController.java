@@ -22,6 +22,9 @@ public class CustomerOrderController {
 	@Autowired
 	private CustomerOrderService customerOrderService;
 
+	/**
+	 *显示客户订单页面
+	 */
 	@RequestMapping(value = "/showCustomerOrder")
 	public String showOrder(HttpServletRequest request, HttpSession session) {
 		Customer customer = (Customer) session.getAttribute("customer");
@@ -30,6 +33,9 @@ public class CustomerOrderController {
 		return "front/order";
 	}
 
+	/**
+	 * 取消订单
+	 */
 	@RequestMapping(value = "/deleteCustomerOrder")
 	public void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
@@ -40,11 +46,21 @@ public class CustomerOrderController {
 			out.write("failure");
 	}
 
+	/**
+	 * 客户选择入住
+	 */
 	@RequestMapping(value = "/checkInCustomerOrder")
 	public void checkIn(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		int oId = Integer.parseInt(request.getParameter("oId"));
-		out.write(customerOrderService.checkin(oId));
+		out.write(customerOrderService.checkIn(oId));
+	}
+
+	@RequestMapping(value = "/checkOutCustomerOrder")
+	public void checkout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		int oId = Integer.parseInt(request.getParameter("oId"));
+		out.write(customerOrderService.checkOut(oId));
 	}
 
 

@@ -82,35 +82,38 @@ $(function(){
 
 
     // 预定房间按钮事件
-    $("#orderbtn").click(function () {
-		var time = $("#date-range0").val();
-		var member = $("#member").val();
-		var customer = $("#cid").val();
-		console.log(customer);
-		var type = $("#orderbtn").val();
-		if (customer != null) {
-			if (time != "" && member != 0) {
-				$.ajax({
-					type : "post",
-					url : "/hotel/createOrder",
-					dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
-					data : {
-						time : time,
-						type : type
-					},
-					success : function(data) {
-						if (data == "success") {
-							alert("预定成功");
-						} else
-							alert("预定失败");
-					},
-				});
+	    $("button[id^='orderbtn']").each(function() {
+		$(this).click(function() {
+			var time = $("#date-range0").val();
+			var member = $("#member").val();
+			var customer = $("#cid").val();
+			var type = $(this).val();
+			if (customer != null) {
+				if (time != "" && member != 0) {
+					if (window.confirm('你确定要预定这个房间吗？')) {
+						$.ajax({
+							type : "post",
+							url : "/hotel/createOrder",
+							dataType : "text", // data传递的是一个json类型的值，而不是字符串，且必须标明dataType的类型，否则会出现400错误或者其他错误。
+							data : {
+								time : time,
+								type : type
+							},
+							success : function(data) {
+								if (data == "success") {
+									alert("预定成功");
+								} else
+									alert("预定失败");
+							},
+						});
+					}
+				} else {
+					alert("请选择入住日期和退房日期 或者房客数量");
+				}
 			} else {
-				alert("请选择入住日期和退房日期 或者房客数量");
+				alert("请先登录");
 			}
-		} else {
-			alert("请先登录");
-		}
+		});
 	});
 
     // 取消订单按钮事件
