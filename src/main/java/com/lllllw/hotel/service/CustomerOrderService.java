@@ -50,22 +50,41 @@ public class CustomerOrderService {
 		return orderMapper.deleteByPrimaryKey(oId) ==1;
 	}
 
-	public String checkin(int oId) {
+	public String checkIn(int oId) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Order order = orderMapper.selectByPrimaryKey(oId);
 		Date nowTime = new Date();
-		System.out.println(sdf.format(nowTime));
-		System.out.println(sdf.format(order.getoCheckintime()));
-		System.out.println(sdf.format(nowTime).equals(sdf.format(order.getoCheckintime())));
 		if(sdf.format(nowTime).equals(sdf.format(order.getoCheckintime()))) {
 			System.out.println("666");
 			Room room = new Room();
 			room.setrId(order.getoRid());
+			room.setrUpdated(nowTime);
 			room.setrOrder(order.getoId());
 			roomMapper.updateByPrimaryKeySelective(room);
+			order.setoStringfield2(hotelUtil.getRandomString(6));
 			order.setoBoolfield1(true);
+			order.setoUpdated(nowTime);
 			orderMapper.updateByPrimaryKey(order);
-			return hotelUtil.getRandomString(6);
+			return order.getoStringfield2();
+		}else {
+			return "failure";
+		}
+	}
+
+	public String checkOut(int oId) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Order order = orderMapper.selectByPrimaryKey(oId);
+		Date nowTime = new Date();
+		if(sdf.format(nowTime).equals(sdf.format(order.getoCheckouttime()))) {
+			Room room = roomMapper.selectByPrimaryKey(order.getoRid());
+			room.setrOrder(null);
+			room.setrUpdated(nowTime);
+			roomMapper.updateByPrimaryKey(room);
+			order.setoStringfield2(null);
+			order.setoStatus(true);
+			order.setoUpdated(nowTime);
+			orderMapper.updateByPrimaryKey(order);
+			return order.getoPrice().toString();
 		}else {
 			return "failure";
 		}
