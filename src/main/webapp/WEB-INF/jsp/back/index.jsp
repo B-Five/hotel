@@ -151,7 +151,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="ui_colors.html" class="nav-link ">
+                                    <a href="/hotel/backRoom" class="nav-link ">
                                         <span class="title">客房</span>
                                     </a>
                                 </li>
@@ -752,7 +752,7 @@
 
         </div>
         <!-- END CONTAINER -->
-        <!-- BEGIN CORE PLUGINS -->
+<!-- BEGIN CORE PLUGINS -->
 <script src="resource/back/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="resource/back/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="resource/back/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
@@ -789,5 +789,4 @@
 <script src="resource/back/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 </body>
-
 </html>
