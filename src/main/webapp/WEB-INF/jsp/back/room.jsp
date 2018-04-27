@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -499,20 +500,21 @@
                                     <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                                         <thead>
                                             <tr>
-                                                <th> Username </th>
-                                                <th> Full Name </th>
-                                                <th> Points </th>
-                                                <th> Notes </th>
+                                                <th> 房间号 </th>
+                                                <th> 房间类型 </th>
+                                                <th> 房间成员数 </th>
+                                                <th> 房间价格 </th>
                                                 <th> Edit </th>
                                                 <th> Delete </th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        	<c:forEach items="${roomList}" var="room" >
                                             <tr>
-                                                <td> alex </td>
-                                                <td> Alex Nilson </td>
-                                                <td> 1234 </td>
-                                                <td class="center"> power user </td>
+                                                <td> ${room.rNumber} </td>
+                                                <td> ${room.rType}</td>
+                                                <td> ${room.rMember} </td>
+                                                <td class="center"> ${room.rPrice} </td>
                                                 <td>
                                                     <a class="edit" href="javascript:;"> Edit </a>
                                                 </td>
@@ -520,90 +522,7 @@
                                                     <a class="delete" href="javascript:;"> Delete </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td> lisa </td>
-                                                <td> Lisa Wong </td>
-                                                <td> 434 </td>
-                                                <td class="center"> new user </td>
-                                                <td>
-                                                    <a class="edit" href="javascript:;"> Edit </a>
-                                                </td>
-                                                <td>
-                                                    <a class="delete" href="javascript:;"> Delete </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> nick12 </td>
-                                                <td> Nick Roberts </td>
-                                                <td> 232 </td>
-                                                <td class="center"> power user </td>
-                                                <td>
-                                                    <a class="edit" href="javascript:;"> Edit </a>
-                                                </td>
-                                                <td>
-                                                    <a class="delete" href="javascript:;"> Delete </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> goldweb </td>
-                                                <td> Sergio Jackson </td>
-                                                <td> 132 </td>
-                                                <td class="center"> elite user </td>
-                                                <td>
-                                                    <a class="edit" href="javascript:;"> Edit </a>
-                                                </td>
-                                                <td>
-                                                    <a class="delete" href="javascript:;"> Delete </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> alex </td>
-                                                <td> Alex Nilson </td>
-                                                <td> 1234 </td>
-                                                <td class="center"> power user </td>
-                                                <td>
-                                                    <a class="edit" href="javascript:;"> Edit </a>
-                                                </td>
-                                                <td>
-                                                    <a class="delete" href="javascript:;"> Delete </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> webriver </td>
-                                                <td> Antonio Sanches </td>
-                                                <td> 462 </td>
-                                                <td class="center"> new user </td>
-                                                <td>
-                                                    <a class="edit" href="javascript:;"> Edit </a>
-                                                </td>
-                                                <td>
-                                                    <a class="delete" href="javascript:;"> Delete </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> gist124 </td>
-                                                <td> Nick Roberts </td>
-                                                <td> 62 </td>
-                                                <td class="center"> new user </td>
-                                                <td>
-                                                    <a class="edit" href="javascript:;"> Edit </a>
-                                                </td>
-                                                <td>
-                                                    <a class="delete" href="javascript:;"> Delete </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> alex </td>
-                                                <td> Alex Nilson </td>
-                                                <td> 1234 </td>
-                                                <td class="center"> power user </td>
-                                                <td>
-                                                    <a class="edit" href="javascript:;"> Edit </a>
-                                                </td>
-                                                <td>
-                                                    <a class="delete" href="javascript:;"> Delete </a>
-                                                </td>
-                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -628,6 +547,7 @@
 <script src="resource/back/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="resource/back/assets/global/scripts/datatable.js" type="text/javascript"></script>
 <script src="resource/back/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="resource/back/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
@@ -638,9 +558,8 @@
 <script src="resource/back/assets/pages/scripts/table-datatables-editable.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
-<script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
-<script src="../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
-<script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<script src="resource/back/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+<script src="resource/back/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 </body>
 </html>
