@@ -170,100 +170,8 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="components_date_time_pickers.html" class="nav-link ">
-                                        <span class="title">Date & Time Pickers</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_color_pickers.html" class="nav-link ">
-                                        <span class="title">Color Pickers</span>
-                                        <span class="badge badge-danger">2</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_select2.html" class="nav-link ">
-                                        <span class="title">Select2 Dropdowns</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_bootstrap_select.html" class="nav-link ">
-                                        <span class="title">Bootstrap Select</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_multi_select.html" class="nav-link ">
-                                        <span class="title">Multi Select</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_bootstrap_select_splitter.html" class="nav-link ">
-                                        <span class="title">Select Splitter</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_typeahead.html" class="nav-link ">
-                                        <span class="title">Typeahead Autocomplete</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_bootstrap_tagsinput.html" class="nav-link ">
-                                        <span class="title">Bootstrap Tagsinput</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_bootstrap_switch.html" class="nav-link ">
-                                        <span class="title">Bootstrap Switch</span>
-                                        <span class="badge badge-success">6</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_bootstrap_maxlength.html" class="nav-link ">
-                                        <span class="title">Bootstrap Maxlength</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_bootstrap_fileinput.html" class="nav-link ">
-                                        <span class="title">Bootstrap File Input</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_bootstrap_touchspin.html" class="nav-link ">
-                                        <span class="title">Bootstrap Touchspin</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_form_tools.html" class="nav-link ">
-                                        <span class="title">Form Widgets & Tools</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_context_menu.html" class="nav-link ">
-                                        <span class="title">Context Menu</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_editors.html" class="nav-link ">
-                                        <span class="title">Markdown & WYSIWYG Editors</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_code_editors.html" class="nav-link ">
-                                        <span class="title">Code Editors</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_ion_sliders.html" class="nav-link ">
-                                        <span class="title">Ion Range Sliders</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_noui_sliders.html" class="nav-link ">
-                                        <span class="title">NoUI Range Sliders</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="components_knob_dials.html" class="nav-link ">
-                                        <span class="title">Knob Circle Dials</span>
+                                    <a href="/hotel/backOrder" class="nav-link ">
+                                        <span class="title">订单</span>
                                     </a>
                                 </li>
                             </ul>
@@ -276,72 +184,8 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="form_controls.html" class="nav-link ">
-                                        <span class="title">Bootstrap Form
-                                            <br>Controls</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_controls_md.html" class="nav-link ">
-                                        <span class="title">Material Design
-                                            <br>Form Controls</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_validation.html" class="nav-link ">
-                                        <span class="title">Form Validation</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_validation_states_md.html" class="nav-link ">
-                                        <span class="title">Material Design
-                                            <br>Form Validation States</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_validation_md.html" class="nav-link ">
-                                        <span class="title">Material Design
-                                            <br>Form Validation</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_layouts.html" class="nav-link ">
-                                        <span class="title">Form Layouts</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_input_mask.html" class="nav-link ">
-                                        <span class="title">Form Input Mask</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_editable.html" class="nav-link ">
-                                        <span class="title">Form X-editable</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_wizard.html" class="nav-link ">
-                                        <span class="title">Form Wizard</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_icheck.html" class="nav-link ">
-                                        <span class="title">iCheck Controls</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_image_crop.html" class="nav-link ">
-                                        <span class="title">Image Cropping</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_fileupload.html" class="nav-link ">
-                                        <span class="title">Multiple File Upload</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="form_dropzone.html" class="nav-link ">
-                                        <span class="title">Dropzone File Upload</span>
+                                    <a href="/hotel/backCustomer" class="nav-link ">
+                                        <span class="title">客户</span>
                                     </a>
                                 </li>
                             </ul>
@@ -354,18 +198,13 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="elements_steps.html" class="nav-link ">
-                                        <span class="title">Steps</span>
+                                    <a href="/hotel/backServices" class="nav-link ">
+                                        <span class="title">服务</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="elements_lists.html" class="nav-link ">
-                                        <span class="title">Lists</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="elements_ribbons.html" class="nav-link ">
-                                        <span class="title">Ribbons</span>
+                                    <a href="/hotel/backServicesType" class="nav-link ">
+                                        <span class="title">服务类型</span>
                                     </a>
                                 </li>
                             </ul>
@@ -378,53 +217,9 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                        <span class="title">Static Tables</span>
-                                        <span class="arrow"></span>
+                                    <a href="/hotel/backStaff" class="nav-link ">
+                                        <span class="title">员工</span>
                                     </a>
-                                    <ul class="sub-menu">
-                                        <li class="nav-item ">
-                                            <a href="table_static_basic.html" class="nav-link "> Basic Tables </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_static_responsive.html" class="nav-link "> Responsive Tables </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                        <span class="title">Datatables</span>
-                                        <span class="arrow"></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_managed.html" class="nav-link "> Managed Datatables </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_buttons.html" class="nav-link "> Buttons Extension </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_colreorder.html" class="nav-link "> Colreorder Extension </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_rowreorder.html" class="nav-link "> Rowreorder Extension </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_scroller.html" class="nav-link "> Scroller Extension </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_fixedheader.html" class="nav-link "> FixedHeader Extension </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_responsive.html" class="nav-link "> Responsive Extension </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_editable.html" class="nav-link "> Editable Datatables </a>
-                                        </li>
-                                        <li class="nav-item ">
-                                            <a href="table_datatables_ajax.html" class="nav-link "> Ajax Datatables </a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
                         </li>
