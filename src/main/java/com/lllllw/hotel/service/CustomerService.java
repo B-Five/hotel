@@ -8,6 +8,8 @@ import com.lllllw.hotel.model.Customer;
 import com.lllllw.hotel.model.CustomerExample;
 import com.lllllw.hotel.model.CustomerExample.Criteria;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
 
@@ -36,5 +38,10 @@ public class CustomerService {
 
 	public boolean createCustomer(Customer customer) {
 			return customerMapper.insert(customer) == 1;
+	}
+
+	public List<Customer> searchAllCustomer(){
+		CustomerExample example = new CustomerExample();
+		return customerMapper.selectByExample(example);
 	}
 }

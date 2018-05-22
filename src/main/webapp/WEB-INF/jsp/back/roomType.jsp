@@ -151,13 +151,13 @@
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="nav-item active open ">
+                        <li class="nav-item  ">
                             <a href="/hotel/backRoom" class="nav-link ">
                                 <span class="title">客房</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
-                            <a href="ui_general.html" class="nav-link ">
+                        <li class="nav-item active open ">
+                            <a href="/hotel/backRoomType" class="nav-link ">
                                 <span class="title">客房种类</span>
                             </a>
                         </li>
@@ -171,7 +171,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
-                            <a href="components_date_time_pickers.html" class="nav-link ">
+                            <a href="/hotel/backOrder" class="nav-link ">
                                 <span class="title">订单</span>
                             </a>
                         </li>
@@ -185,7 +185,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
-                            <a href="form_controls.html" class="nav-link ">
+                            <a href="/hotel/backCustomer" class="nav-link ">
                                 <span class="title">客户</span>
                             </a>
                         </li>
@@ -199,12 +199,12 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
-                            <a href="elements_steps.html" class="nav-link ">
+                            <a href="/hotel/backServices" class="nav-link ">
                                 <span class="title">服务</span>
                             </a>
                         </li>
                         <li class="nav-item  ">
-                            <a href="elements_lists.html" class="nav-link ">
+                            <a href="/hotel/backServicesType" class="nav-link ">
                                 <span class="title">服务类型</span>
                             </a>
                         </li>
@@ -218,7 +218,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
-                            <a href="elements_steps.html" class="nav-link ">
+                            <a href="/hotel/backStaff" class="nav-link ">
                                 <span class="title">员工</span>
                             </a>
                         </li>
@@ -295,21 +295,27 @@
                             <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                                 <thead>
                                 <tr>
-                                    <th> 房间号 </th>
-                                    <th> 房间类型 </th>
-                                    <th> 房间成员数 </th>
-                                    <th> 房间价格 </th>
+                                    <th> 类型编号 </th>
+                                    <th> 类型名称 </th>
+                                    <th> 类型床型 </th>
+                                    <th> 成员数量 </th>
+                                    <th> 类型位置</th>
+                                    <th> 浴室类型 </th>
+                                    <th> 类型备注 </th>
                                     <th> Edit </th>
                                     <th> Delete </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${roomList}" var="room" >
+                                <c:forEach items="${roomTypeList}" var="roomType" >
                                     <tr>
-                                        <td> ${room.rNumber} </td>
-                                        <td> ${room.rType}</td>
-                                        <td> ${room.rMember} </td>
-                                        <td class="center"> ${room.rPrice} </td>
+                                        <td> ${roomType.tId} </td>
+                                        <td> ${roomType.tName}</td>
+                                        <td> ${roomType.tBed} </td>
+                                        <td> ${roomType.tMember} </td>
+                                        <td> ${roomType.tPo} </td>
+                                        <td> ${roomType.tBath} </td>
+                                        <td> ${roomType.tRemarks} </td>
                                         <td>
                                             <a class="edit" href="javascript:;"> Edit </a>
                                         </td>
@@ -350,11 +356,11 @@
     <script src="resource/back/assets/global/scripts/app.min.js" type="text/javascript"></script>
     <!-- END THEME GLOBAL SCRIPTS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="resource/back/assets/pages/scripts/table-datatables-editable.min.js" type="text/javascript"></script>
+    <script src="resource/back/assets/pages/scripts/table-datatables-editableRoomType.min.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <!-- BEGIN THEME LAYOUT SCRIPTS -->
     <script src="resource/back/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
     <script src="resource/back/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
     <!-- END THEME LAYOUT SCRIPTS -->
 </body>
-</html>
+</html>>

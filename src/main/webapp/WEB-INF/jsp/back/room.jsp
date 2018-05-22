@@ -157,7 +157,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="ui_general.html" class="nav-link ">
+                                    <a href="/hotel/backRoomType" class="nav-link ">
                                         <span class="title">客房种类</span>
                                     </a>
                                 </li>
@@ -171,7 +171,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="components_date_time_pickers.html" class="nav-link ">
+                                    <a href="/hotel/backOrder" class="nav-link ">
                                         <span class="title">订单</span>
                                     </a>
                                 </li>
@@ -185,7 +185,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="form_controls.html" class="nav-link ">
+                                    <a href="/hotel/backCustomer" class="nav-link ">
                                         <span class="title">客户</span>
                                     </a>
                                 </li>
@@ -199,12 +199,12 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="elements_steps.html" class="nav-link ">
+                                    <a href="/hotel/backServices" class="nav-link ">
                                         <span class="title">服务</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="elements_lists.html" class="nav-link ">
+                                    <a href="/hotel/backServicesType" class="nav-link ">
                                         <span class="title">服务类型</span>
                                     </a>
                                 </li>
@@ -218,7 +218,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
-                                    <a href="elements_steps.html" class="nav-link ">
+                                    <a href="/hotel/backStaff" class="nav-link ">
                                         <span class="title">员工</span>
                                     </a>
                                 </li>

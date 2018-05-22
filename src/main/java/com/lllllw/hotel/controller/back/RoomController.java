@@ -12,10 +12,17 @@ public class RoomController {
 
 	@Autowired
 	private RoomService roomService;
+
 	
 	@RequestMapping(value = "/backRoom")
 	public String showRoomPage(Model model) {
 		model.addAttribute("roomList", roomService.selectAllRoom());
 		return "back/room";
+	}
+
+	@RequestMapping(value = "/backRoomType")
+	public String showRoomTypePage(Model model) {
+		model.addAttribute("roomTypeList", roomService.selectAllRoomType());
+		return "back/roomType";
 	}
 }
