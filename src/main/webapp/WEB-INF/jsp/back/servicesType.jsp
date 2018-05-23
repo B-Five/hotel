@@ -226,7 +226,7 @@
             </div>
             <!-- END PAGE BAR -->
             <!-- BEGIN PAGE TITLE-->
-            <h3 class="page-title"> 客房
+            <h3 class="page-title"> 服务类型
             </h3>
             <!-- END PAGE TITLE-->
             <!-- END PAGE HEADER-->
