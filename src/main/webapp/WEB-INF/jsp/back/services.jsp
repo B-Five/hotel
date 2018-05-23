@@ -237,7 +237,7 @@
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="icon-settings font-red"></i>
-                                <span class="caption-subject font-red sbold uppercase">客房列表</span>
+                                <span class="caption-subject font-red sbold uppercase">服务列表</span>
                             </div>
                         </div>
                         <div class="portlet-body">
