@@ -208,15 +208,12 @@
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html">首页</a>
                         <i class="fa fa-circle"></i>
                     </li>
                     <li>
-                        <a href="#">Tables</a>
+                        <a href="#">订单</a>
                         <i class="fa fa-circle"></i>
-                    </li>
-                    <li>
-                        <span>Datatables</span>
                     </li>
                 </ul>
                 <div class="page-toolbar">

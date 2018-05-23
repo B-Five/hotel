@@ -204,9 +204,8 @@
 				<!-- BEGIN PAGE BAR -->
 				<div class="page-bar">
 					<ul class="page-breadcrumb">
-						<li><a href="index.html">Home</a> <i class="fa fa-circle"></i>
+						<li><a href="index.html">首页</a> <i class="fa fa-circle"></i>
 						</li>
-						<li><span>Dashboard</span></li>
 					</ul>
 					<div class="btn-group pull-right"></div>
 				</div>
