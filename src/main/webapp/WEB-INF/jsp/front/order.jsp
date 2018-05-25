@@ -22,7 +22,7 @@
 			<ul class="pull-right">
 				<li><a href="/hotel/searchPage">预定</a></li>
 				<li><a href="/hotel/showCustomerOrder">订单</a></li>
-				<li><a href="#">额外服务</a></li>
+				<li><a href="/hotel/services">额外服务</a></li>
 				<li><a href="/hotel/loginOut">退出登录</a></li>
 			</ul>
 		</div>
