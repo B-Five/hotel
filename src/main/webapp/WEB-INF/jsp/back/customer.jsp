@@ -273,8 +273,8 @@
                                         <td> ${customer.cGender} </td>
                                         <td> ${customer.cPhone} </td>
                                         <td> ${customer.cEmail} </td>
-                                        <td> ${customer.cCreated} </td>
-                                        <td> ${customer.cUpdated} </td>
+                                        <td> <fmt:formatDate value="${customer.cCreated}" type="BOTH" /> </td>
+                                        <td> <fmt:formatDate value="${customer.cUpdated}" type="BOTH" /> </td>
                                         <td>
                                             <a class="edit" href="javascript:;"> Edit </a>
                                         </td>

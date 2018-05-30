@@ -26,8 +26,9 @@ public class CustomerService {
             Customer customer = customerMapper.selectByExample(example).get(0);
             customer.setcPassword(null);
             return customer;
-        } else
+        } else {
             return null;
+        }
     }
 
     public boolean emailCheck(String email) {

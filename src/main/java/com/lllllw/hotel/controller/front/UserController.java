@@ -52,20 +52,24 @@ public class UserController {
 		customer.setcLastname(request.getParameter("lastname"));
 		customer.setcFirstname(request.getParameter("firstname"));
 		customer.setcPhone(request.getParameter("phone"));
-		if (customerService.createCustomer(customer))
+		if (customerService.createCustomer(customer)) {
 			out.write("success");
-		else
+		}
+		else {
 			out.write("failure");
+		}
 	}
 
 	@RequestMapping(value = "/emailCheck")
 	public void emailCheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		String email = request.getParameter("email");
-		if (customerService.emailCheck(email))
+		if (customerService.emailCheck(email)) {
 			out.write("success");
-		else
+		}
+		else {
 			out.write("failure");
+		}
 	}
 
 	@RequestMapping(value = "/logOut")

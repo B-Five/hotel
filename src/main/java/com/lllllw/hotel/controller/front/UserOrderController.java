@@ -40,10 +40,12 @@ public class UserOrderController {
 	public void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		int oId = Integer.parseInt(request.getParameter("oId"));
-		if (customerOrderService.deleteCustomerOrder(oId))
+		if (customerOrderService.deleteCustomerOrder(oId)) {
 			out.write("success");
-		else
+		}
+		else {
 			out.write("failure");
+		}
 	}
 
 	/**

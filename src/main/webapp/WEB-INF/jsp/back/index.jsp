@@ -212,7 +212,7 @@
 				<!-- END PAGE BAR -->
 				<!-- BEGIN PAGE TITLE-->
 				<h3 class="page-title">
-					Dashboard <small>dashboard & statistics</small>
+					酒店管理 <small>财务报告</small>
 				</h3>
 				<!-- END PAGE TITLE-->
 				<!-- END PAGE HEADER-->
@@ -227,7 +227,7 @@
 								<div class="number">
 									<span data-counter="counterup" data-value="1349">0</span>
 								</div>
-								<div class="desc">New Feedbacks</div>
+								<div class="desc">回头客</div>
 							</div>
 							<a class="more" href="javascript:;"> View more <i
 								class="m-icon-swapright m-icon-white"></i>
@@ -243,7 +243,7 @@
 								<div class="number">
 									<span data-counter="counterup" data-value="12,5">0</span>M$
 								</div>
-								<div class="desc">Total Profit</div>
+								<div class="desc">总利润</div>
 							</div>
 							<a class="more" href="javascript:;"> View more <i
 								class="m-icon-swapright m-icon-white"></i>
@@ -259,7 +259,7 @@
 								<div class="number">
 									<span data-counter="counterup" data-value="549">0</span>
 								</div>
-								<div class="desc">New Orders</div>
+								<div class="desc">新订单</div>
 							</div>
 							<a class="more" href="javascript:;"> View more <i
 								class="m-icon-swapright m-icon-white"></i>
@@ -275,7 +275,7 @@
 								<div class="number">
 									+ <span data-counter="counterup" data-value="89"></span>%
 								</div>
-								<div class="desc">Brand Popularity</div>
+								<div class="desc">客户量</div>
 							</div>
 							<a class="more" href="javascript:;"> View more <i
 								class="m-icon-swapright m-icon-white"></i>

@@ -34,8 +34,9 @@ public class OrderRoomController {
 		if (request.getParameter("member") != null && !"".equals(request.getParameter("member"))) {
 			member = Integer.parseInt(request.getParameter("member"));
 			roomTypeList = orderRoomService.selectRoomType(time, member);
-		}else
+		}else {
 			roomTypeList = orderRoomService.selectRoomType(time, 0);
+		}
 		request.setAttribute("roomTypeList", roomTypeList);
 		request.setAttribute("time", time);
 		request.setAttribute("member", member);

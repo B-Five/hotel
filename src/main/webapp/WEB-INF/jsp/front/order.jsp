@@ -42,7 +42,7 @@
 					<li>入住日期:<fmt:formatDate value="${order.oCheckintime}" /></li>
 					<li>退房日期:<fmt:formatDate value="${order.oCheckouttime}"/></li>
 					<c:if test="${order.oStatus}">
-					<a href="#" class="btn btn-primary btn-sm disabled" role="button">订单已关闭</a>
+					<a href="#" class="btn btn-primary btn-sm disabled" role="button">订单已完成</a>
 					</c:if>
 					<c:if test="${!order.oStatus}">
 					<c:if test="${order.oBoolfield1}">
@@ -63,26 +63,23 @@
 			<div class="row">
 				<div class="col-md-4">
 					<h3>预定</h3>
-					<p>From apartments and rooms to treehouses and boats: stay in
-						unique spaces in 192 countries.</p>
+					<p>进入预定页面，选择要入住的日期和退房的日期，然后查询，最后选择合适的房间进行预定即可</p>
 					<p>
-						<a href="#">See how to travel on Airbnb</a>
+						<a href="#">预定</a>
 					</p>
 				</div>
 				<div class="col-md-4">
 					<h3>入住</h3>
-					<p>Renting out your unused space could pay your bills or fund
-						your next vacation.</p>
+					<p>进入订单页面，选择要入住的订单，点击预定即可</p>
 					<p>
-						<a href="#">Learn more about hosting</a>
+						<a href="#">入住</a>
 					</p>
 				</div>
 				<div class="col-md-4">
 					<h3>额外服务</h3>
-					<p>From Verified ID to our worldwide customer support team,
-						we've got your back.</p>
+					<p>进入额外服务页面，选择想要的服务，然后选择服务时间即可</p>
 					<p>
-						<a href="#">Learn about trust at Airbnb</a>
+						<a href="#">额外服务</a>
 					</p>
 				</div>
 			</div>
