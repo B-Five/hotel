@@ -46,7 +46,7 @@
 
 	<div class="jumbotron">a
 		<div class="container">
-			<h1>TOBBY酒店</h1>
+			<h1>XX酒店</h1>
 			<p>在这邂逅不期而遇的美好，人生从此更丰厚</p>
 			<a href="#">立即预定！</a>
 		</div>
